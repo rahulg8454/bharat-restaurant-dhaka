@@ -1,5 +1,15 @@
 import { MenuCategory } from "@/data/menuData";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useCart } from "@/contexts/CartContext";
+import { Button } from "@/components/ui/button";
+import { ShoppingCart, Plus } from "lucide-react";
+
 const MenuSection = ({ category }: { category: MenuCategory }) => {
+  const { language } = useLanguage();
+  const { addToCart } = useCart();
+
+  const categoryTitle = language === 'en' ? category.titleEn : category.title;
+
   return (
     <section id={category.id} className="max-w-3xl mx-auto px-3 py-4">
 
@@ -12,7 +22,7 @@ const MenuSection = ({ category }: { category: MenuCategory }) => {
         <div className="relative h-36 md:h-44 w-full overflow-hidden">
           <img
             src={category.image}
-            alt={category.title}
+            alt={categoryTitle}
             className="w-full h-full object-cover"
             loading="lazy"
           />
@@ -20,85 +30,89 @@ const MenuSection = ({ category }: { category: MenuCategory }) => {
           <div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(to top, hsl(var(--background) / 0.97) 0%, hsl(var(--background) / 0.6) 40%, transparent 100%)"
+              background:
+                "linear-gradient(to bottom, transparent 30%, hsl(var(--card) / 0.95) 100%)",
             }}
           />
-          {/* Category info overlay */}
-          <div className="absolute bottom-0 left-0 right-0 px-4 pb-3 flex items-end justify-between">
-            <div className="flex items-center gap-2.5">
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md"
-                style={{
-                  background: "linear-gradient(135deg, hsl(var(--saffron)), hsl(var(--primary)))",
-                  boxShadow: "0 4px 10px hsl(var(--primary) / 0.4)"
-                }}
-              >
-                <span className="text-xl">{category.emoji}</span>
-              </div>
-              <h2 className="text-xl md:text-2xl font-extrabold tracking-wide drop-shadow-lg" style={{ color: "hsl(var(--foreground))" }}>
-                {category.title}
-              </h2>
-            </div>
-            <span
-              className="text-xs font-bold px-2.5 py-1 rounded-full shadow-md"
-              style={{
-                background: "hsl(var(--primary) / 0.85)",
-                color: "hsl(var(--primary-foreground))",
-                backdropFilter: "blur(8px)"
-              }}
-            >
-              {category.items.length} आइटम
-            </span>
-          </div>
+        </div>
+
+        {/* Category title and emoji */}
+        <div className="absolute bottom-0 left-0 right-0 px-4 py-3">
+          <h2 className="text-xl font-bold flex items-center gap-2">
+            <span>{category.emoji}</span>
+            <span>{categoryTitle}</span>
+          </h2>
         </div>
       </div>
 
-      {/* Items Grid */}
-      <div className="grid gap-2">
-        {category.items.map((item, idx) => (
-          <div
-            key={idx}
-            className="menu-card flex items-center justify-between rounded-2xl px-4 py-3 transition-all group"
-          >
-            {/* Left: veg indicator + name + qty */}
-            <div className="flex items-center gap-3 flex-1 min-w-0">
-              {/* Veg square */}
-              <span
-                className="w-5 h-5 rounded flex items-center justify-center text-[9px] flex-shrink-0 font-bold"
-                style={{
-                  border: "2px solid hsl(140 65% 36%)",
-                  color: "hsl(140 65% 36%)",
-                  background: "hsl(140 65% 36% / 0.08)"
-                }}
-              >●</span>
-              <div className="min-w-0">
-                <p className="font-bold text-sm md:text-base leading-tight truncate group-hover:text-primary transition-colors" style={{ color: "hsl(var(--card-foreground))" }}>
-                  {item.name}
-                </p>
-                {item.quantity && (
-                  <p className="text-xs mt-0.5 font-medium" style={{ color: "hsl(var(--muted-foreground))" }}>
-                    📦 {item.quantity}
-                  </p>
-                )}
+      {/* Menu Items Grid */}
+      <div className="space-y-2">
+        {category.items.map((item, index) => {
+          const itemName = language === 'en' ? item.nameEn : item.name;
+          return (
+            <div
+              key={index}
+              className="menu-item-card flex items-center justify-between px-4 py-3 rounded-xl gap-3"
+              style={{
+                background: "hsl(var(--card))",
+                border: "1px solid hsl(var(--border) / 0.6)",
+              }}
+            >
+              {/* Item info */}
+              <div className="flex items-center gap-3 flex-1 min-w-0">
+                {/* Veg/Non-veg indicator */}
+                <div
+                  className={`w-4 h-4 shrink-0 rounded-sm border-2 flex items-center justify-center ${
+                    item.veg
+                      ? "border-green-500"
+                      : "border-red-500"
+                  }`}
+                >
+                  <div
+                    className={`w-2 h-2 rounded-full ${
+                      item.veg ? "bg-green-500" : "bg-red-500"
+                    }`}
+                  />
+                </div>
+
+                {/* Item name and quantity */}
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold truncate">{itemName}</p>
+                  {item.quantity && (
+                    <p className="text-xs text-muted-foreground">{item.quantity}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Price and Add button */}
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="text-sm font-bold text-primary">
+                  ₹{item.price}
+                </span>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="h-7 w-7 p-0 rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  onClick={() => addToCart({
+                    name: item.name,
+                    nameEn: item.nameEn,
+                    price: item.price,
+                    quantity: item.quantity,
+                    veg: item.veg,
+                    categoryId: category.id,
+                    categoryTitle: category.title,
+                    categoryTitleEn: category.titleEn,
+                  })}
+                >
+                  <Plus className="h-3 w-3" />
+                </Button>
               </div>
             </div>
-            {/* Right: price badge */}
-            <div className="ml-3 flex-shrink-0">
-              <span
-                className="font-extrabold text-lg md:text-xl whitespace-nowrap px-3 py-1 rounded-xl"
-                style={{
-                  color: "hsl(var(--primary))",
-                  background: "hsl(var(--primary) / 0.08)",
-                  border: "1px solid hsl(var(--primary) / 0.15)"
-                }}
-              >
-                ₹{item.price}
-              </span>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
 };
+
 export default MenuSection;
