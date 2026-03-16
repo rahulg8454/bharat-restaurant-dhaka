@@ -3,43 +3,50 @@ import { Button } from './ui/button';
 import { useCart } from '../contexts/CartContext';
 import { useLanguage } from '../contexts/LanguageContext';
 
-const WHATSAPP_NUMBER = '7979';
+const WHATSAPP_NUMBER = '917979745730';
 
-export const WhatsAppCheckout = () => {
-  const { cart, totalPrice } = useCart();
+interface WhatsAppCheckoutProps {
+  onClose: () => void;
+}
+
+export const WhatsAppCheckout = ({ onClose }: WhatsAppCheckoutProps) => {
+  const { cart, totalPrice, clearCart } = useCart();
   const { language, t } = useLanguage();
 
   const handleWhatsAppOrder = () => {
-    const items = cart.map(item => 
-      `${language === 'hi' ? item.nameHi : item.name} x${item.quantity} - ₹${item.price * item.quantity}`
-    ).join('\n');
+    const items = cart.map((item) => {
+      const displayName = language === 'en' ? item.nameEn : item.name;
+      return `• ${displayName} x${item.qty} - ₹${parseFloat(item.price.split('/')[0]) * item.qty}`;
+    }).join('\n');
 
     const message = encodeURIComponent(
-      `*${t('New Order from Bharat Swad Menu', 'भारत स्वाद मेनू से नया ऑर्डर')}*\n\n${items}\n\n*${t('Total', 'कुल')}: ₹${totalPrice}*\n\n_${t('Note: I will call shortly to confirm this order.', 'नोट: मैं इस ऑर्डर की पुष्टि के लिए शीघ्र ही कॉल करूंगा।')}_`
+      `🙏 *${t('New Order from Bharat Swad Menu', 'भारत स्वाद मेन्यू से नया ऑर्डर')}*\n\n${items}\n\n*${t('Total', 'कुल')}: ₹${totalPrice.toFixed(0)}*\n\n⚠️ ${t('Please call to confirm the order', 'ऑर्डर कन्फर्म करने के लिए कॉल करें')}`
     );
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+    clearCart();
+    onClose();
   };
 
   return (
-    <div className="space-y-2">
-      <Button 
+    <div className="space-y-3">
+      <Button
+        className="w-full bg-green-600 hover:bg-green-700 text-white font-bold"
         onClick={handleWhatsAppOrder}
-        className="w-full bg-green-600 hover:bg-green-700 gap-2"
-        size="lg"
       >
-        <MessageCircle className="w-5 h-5" />
+        <MessageCircle className="mr-2 h-4 w-4" />
         {t('Order on WhatsApp', 'WhatsApp पर ऑर्डर करें')}
       </Button>
-      <a href={`tel:${WHATSAPP_NUMBER}`} className="block">
-        <Button variant="outline" className="w-full gap-2" size="lg">
-          <Phone className="w-5 h-5" />
-          {t('Call to Confirm', 'पुष्टि के लिए कॉल करें')}
-        </Button>
-      </a>
-      <p className="text-xs text-gray-600 mt-3 text-center">
-        {t('⚠️ Please call after sending WhatsApp order to confirm', '⚠️ पुष्टि के लिए WhatsApp ऑर्डर भेजने के बाद कृपया कॉल करें')}
-      </p>
+
+      <div className="text-xs text-center text-muted-foreground px-2 py-2 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800">
+        <Phone className="inline h-3 w-3 mr-1 text-amber-600" />
+        <span className="text-amber-700 dark:text-amber-400 font-medium">
+          {t(
+            'After sending the order on WhatsApp, you must call to confirm: 7979745730',
+            'WhatsApp पर ऑर्डर भेजने के बाद कन्फर्म करने के लिए कॉल करें: 7979745730'
+          )}
+        </span>
+      </div>
     </div>
   );
 };
