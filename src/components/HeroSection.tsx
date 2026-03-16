@@ -1,12 +1,15 @@
 import { Phone, MapPin, Clock } from "lucide-react";
 import logoImg from "@/assets/br-logo.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
+  const { language } = useLanguage();
+
   return (
     <header className="relative overflow-hidden">
       {/* Base gradient */}
       <div className="absolute inset-0 gradient-hero" />
-
+      
       {/* Texture overlay */}
       <div className="absolute inset-0 opacity-[0.06]" style={{
         backgroundImage: `url('/bg-pattern.png')`,
@@ -30,7 +33,6 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
       <div className="relative z-10 text-primary-foreground py-10 px-4 text-center max-w-2xl mx-auto">
         {/* Logo + Sanskrit blessing */}
         <div className="mb-3 flex flex-col items-center gap-3">
-          {/* BR Official Logo */}
           <div className="relative">
             <div className="w-32 h-32 rounded-full overflow-hidden shadow-2xl bg-white flex items-center justify-center"
               style={{
@@ -40,13 +42,17 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
               <img src={logoImg} alt="Bharat Restaurant Logo" className="w-full h-full object-contain p-1" />
             </div>
           </div>
-          <p className="text-base tracking-[0.2em] font-semibold shimmer-text">🌸 ॐ श्री गणेशाय नमः 🌸</p>
-          <p className="text-primary-foreground/70 text-sm tracking-wider">🙏 आपका स्वागत है 🙏</p>
+          <p className="text-base tracking-[0.2em] font-semibold shimmer-text">
+            {language === 'en' ? "🌸 Om Shri Ganeshay Namah 🌸" : "🌸 ॐ श्री गणेशाय नमः 🌸"}
+          </p>
+          <p className="text-primary-foreground/70 text-sm tracking-wider">
+            {language === 'en' ? "🙏 Welcome 🙏" : "🙏 आपका स्वागत है 🙏"}
+          </p>
         </div>
 
-        {/* Restaurant name — calligraphic Hindi style */}
+        {/* Restaurant name */}
         <div className="mb-4">
-          <h1
+          <h1 
             className="font-extrabold drop-shadow-2xl leading-tight"
             style={{
               fontSize: "clamp(3rem, 12vw, 5.5rem)",
@@ -59,17 +65,17 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
               backgroundClip: "text"
             }}
           >
-            भारत रेस्टोरेंट
+            {language === 'en' ? "Bharat Restaurant" : "भारत रेस्टोरेंट"}
           </h1>
           {/* Decorative divider */}
           <div className="flex items-center justify-center gap-3 mt-3 mb-2">
-            <div className="h-px flex-1 max-w-[80px] opacity-50" style={{background: "linear-gradient(to right, transparent, hsl(var(--gold)))"}} />
+            <div className="h-px flex-1 max-w-[80px] opacity-50" style={{background: "linear-gradient(to right, transparent, hsl(var(--gold)))\"}} />
             <div className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full" style={{background: "hsl(var(--gold))"}} />
-              <span className="text-lg" style={{color: "hsl(var(--gold))"}}>✦</span>
-              <span className="w-1.5 h-1.5 rounded-full" style={{background: "hsl(var(--gold))"}} />
+              <span className="w-1.5 h-1.5 rounded-full" style={{background: "hsl(var(--gold))\"}} />
+              <span className="text-lg" style={{color: "hsl(var(--gold))\"}}>✦</span>
+              <span className="w-1.5 h-1.5 rounded-full" style={{background: "hsl(var(--gold))\"}} />
             </div>
-            <div className="h-px flex-1 max-w-[80px] opacity-50" style={{background: "linear-gradient(to left, transparent, hsl(var(--gold)))"}} />
+            <div className="h-px flex-1 max-w-[80px] opacity-50" style={{background: "linear-gradient(to left, transparent, hsl(var(--gold)))\"}} />
           </div>
         </div>
 
@@ -80,15 +86,17 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
           boxShadow: "0 4px 16px hsl(140 65% 20% / 0.4), inset 0 1px 0 hsl(140 60% 50% / 0.2)"
         }}>
           <span className="text-base">🌿</span>
-          <span style={{color: "hsl(140 70% 72%)"}}>100% शुद्ध शाकाहारी रेस्टोरेंट</span>
+          <span style={{color: "hsl(140 70% 72%)\"}}>
+            {language === 'en' ? "100% Pure Vegetarian Restaurant" : "100% शुद्ध शाकाहारी रेस्टोरेंट"}
+          </span>
         </div>
 
         {/* Taglines */}
-        <p className="text-primary-foreground/90 text-lg md:text-xl mb-1 font-bold" style={{textShadow: "0 1px 4px hsl(0 0% 0% / 0.3)"}}>
-          🍛 शुद्ध शाकाहारी भोजन — घर जैसा स्वाद 🍛
+        <p className="text-primary-foreground/90 text-lg md:text-xl mb-1 font-bold" style={{textShadow: "0 1px 4px hsl(0 0% 0% / 0.3)\"}}>
+          {language === 'en' ? "🍛 Pure Veg Food — Taste Like Home 🍛" : "🍛 शुद्ध शाकाहारी भोजन — घर जैसा स्वाद 🍛"}
         </p>
         <p className="text-primary-foreground/60 text-sm mb-5 italic font-medium">
-          "जहाँ हर निवाला बोले — माँ के हाथ का प्यार"
+          {language === 'en' ? '"Where every bite speaks mother\'s love"' : '"जहाँ हर निवाला बोले — माँ के हाथ का प्यार"'}
         </p>
 
         {/* Birthday / Celebration Box */}
@@ -101,15 +109,21 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
             background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.6), transparent)"
           }} />
           <p className="text-sm font-semibold leading-relaxed">
-            🎂 <span className="font-bold" style={{color: "hsl(var(--gold-light))"}}>बर्थडे पार्टी, एनिवर्सरी व सेलिब्रेशन</span> के लिए<br />
-            कस्टमाइज़्ड केक व ऑर्डर उपलब्ध<br />
-            <span className="font-bold" style={{color: "hsl(var(--gold-light))"}}>— एक बार सेवा का अवसर अवश्य दें 🎉</span>
+            🎂 <span className="font-bold" style={{color: "hsl(var(--gold-light))\"}}>
+              {language === 'en' ? "For Birthdays, Anniversaries & Celebrations" : "बर्थडे पार्टी, एनिवर्सरी व सेलिब्रेशन के लिए"}
+            </span>
+            <br />
+            {language === 'en' ? "Customized Cakes & Orders Available" : "कस्टमाइज़्ड केक व ऑर्डर उपलब्ध"}
+            <br />
+            <span className="font-bold" style={{color: "hsl(var(--gold-light))\"}}>
+              {language === 'en' ? "— Give us a chance to serve you 🎉" : "— एक बार सेवा का अवसर अवश्य दें 🎉"}
+            </span>
           </p>
         </div>
 
         {/* Wait time note */}
         <p className="text-primary-foreground/50 text-xs mb-5 italic">
-          ⏳ ऑर्डर के बाद 20-25 मिनट प्रतीक्षा करें
+          {language === 'en' ? "⏳ Please wait 20-25 minutes after ordering" : "⏳ ऑर्डर के बाद 20-25 मिनट प्रतीक्षा करें"}
         </p>
 
         {/* Info pills */}
@@ -125,16 +139,24 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
               backdropFilter: "blur(8px)"
             }}
           >
-            <MapPin className="w-4 h-4 flex-shrink-0" style={{color: "hsl(var(--gold))"}} />
-            <span>एसबीआई बैंक के सामने, गांधी चौक, ढाका, पूर्वी चम्पारण</span>
+            <MapPin className="w-4 h-4 flex-shrink-0" style={{color: "hsl(var(--gold))\"}} />
+            <span>
+              {language === 'en' 
+                ? "Opp. SBI Bank, Gandhi Chowk, Dhaka, East Champaran" 
+                : "एसबीआई बैंक के सामने, गांधी चौक, ढाका, पूर्वी चम्पारण"}
+            </span>
           </a>
           <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full text-sm font-medium" style={{
             background: "hsl(var(--primary-foreground) / 0.08)",
             border: "1px solid hsl(var(--primary-foreground) / 0.15)",
             backdropFilter: "blur(8px)"
           }}>
-            <Clock className="w-4 h-4 flex-shrink-0" style={{color: "hsl(var(--gold))"}} />
-            <span>सुबह 7:00 AM — रात 11:00 PM (सातों दिन खुला)</span>
+            <Clock className="w-4 h-4 flex-shrink-0" style={{color: "hsl(var(--gold))\"}} />
+            <span>
+              {language === 'en' 
+                ? "7:00 AM — 11:00 PM (Open 7 Days)" 
+                : "सुबह 7:00 AM — रात 11:00 PM (सातों दिन खुला)"}
+            </span>
           </div>
         </div>
 
@@ -150,23 +172,23 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
             }}
           >
             <Phone className="w-6 h-6" />
-            अभी ऑर्डर करें
+            {language === 'en' ? "Order Now" : "अभी ऑर्डर करें"}
           </button>
         </div>
 
         {/* Phone numbers */}
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <div className="flex flex-col items-center gap-0.5">
-            <a href="tel:7979745730" className="inline-flex items-center gap-1.5 font-bold text-base hover:underline transition-colors" style={{color: "hsl(var(--gold))"}}>
+            <a href="tel:7979745730" className="inline-flex items-center gap-1.5 font-bold text-base hover:underline transition-colors" style={{color: "hsl(var(--gold))\"}}>
               📞 +91-7979745730
-                            <span className="text-xs" style={{color: "hsl(var(--primary-foreground) / 0.55)"}}>Vivek Gupta</span>
+              <span className="text-xs" style={{color: "hsl(var(--primary-foreground) / 0.55)\"}}>Vivek Gupta</span>
             </a>
           </div>
           <span className="hidden sm:flex text-primary-foreground/20 self-center text-xl">|</span>
           <div className="flex flex-col items-center gap-0.5">
-            <a href="tel:9471217870" className="inline-flex items-center gap-1.5 font-bold text-base hover:underline transition-colors" style={{color: "hsl(var(--gold))"}}>
+            <a href="tel:9471217870" className="inline-flex items-center gap-1.5 font-bold text-base hover:underline transition-colors" style={{color: "hsl(var(--gold))\"}}>
               📞 +91-9471217870
-                            <span className="text-xs" style={{color: "hsl(var(--primary-foreground) / 0.55)"}}>Niraj Gupta</span>
+              <span className="text-xs" style={{color: "hsl(var(--primary-foreground) / 0.55)\"}}>Niraj Gupta</span>
             </a>
           </div>
         </div>
