@@ -6,11 +6,17 @@ import MenuSection from "@/components/MenuSection";
 import ContactModal from "@/components/ContactModal";
 import FloatingContact from "@/components/FloatingContact";
 import DeveloperCredit from "@/components/DeveloperCredit";
+import LanguageToggle from "@/components/LanguageToggle";
+import CartButton from "@/components/CartButton";
+import CartModal from "@/components/CartModal";
+import { useLanguage } from "@/contexts/LanguageContext";
 import logoImg from "@/assets/br-logo.png";
 
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState(menuData[0].id);
   const [contactOpen, setContactOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const { language } = useLanguage();
 
   const handleSelect = (id: string) => {
     setActiveCategory(id);
@@ -28,17 +34,21 @@ const Index = () => {
       },
       { rootMargin: "-50% 0px -50% 0px" }
     );
-
     menuData.forEach((cat) => {
       const el = document.getElementById(cat.id);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, []);
 
   return (
     <div className="min-h-screen">
+      {/* Fixed top bar with Language Toggle and Cart */}
+      <div className="fixed top-0 right-0 z-50 flex items-center gap-2 p-2">
+        <LanguageToggle />
+        <CartButton onClick={() => setCartOpen(true)} />
+      </div>
+
       <HeroSection onContactClick={() => setContactOpen(true)} />
       <CategoryNav activeCategory={activeCategory} onSelect={handleSelect} />
       <main className="pb-28">
@@ -63,16 +73,17 @@ const Index = () => {
           <div className="mb-3 flex flex-col items-center gap-2">
             <div className="w-16 h-16 rounded-full overflow-hidden bg-white shadow-lg"
               style={{border: "2px solid hsl(var(--gold) / 0.6)", boxShadow: "0 0 0 3px hsl(var(--gold) / 0.15), 0 4px 16px hsl(0 0% 0% / 0.12)"}}>
-              <img src={logoImg} alt="भारत रेस्टोरेंट" className="w-full h-full object-cover" />
+              <img src={logoImg} alt="Bharat Restaurant" className="w-full h-full object-cover" />
             </div>
-            <p className="text-2xl font-extrabold" style={{color: "hsl(var(--foreground))"}}>भारत रेस्टोरेंट</p>
+            <p className="text-2xl font-extrabold" style={{color: "hsl(var(--foreground))"}}>
+              {language === "en" ? "Bharat Restaurant" : "भारत रेस्टोरेंट"}
+            </p>
             <div className="flex items-center justify-center gap-2 mt-0.5">
               <div className="h-px w-12" style={{background: "hsl(var(--gold) / 0.4)"}} />
               <span className="text-xs" style={{color: "hsl(var(--gold))"}}>✦</span>
               <div className="h-px w-12" style={{background: "hsl(var(--gold) / 0.4)"}} />
             </div>
           </div>
-
           <a
             href="https://maps.app.goo.gl/b3CPJy7fJHVZFhJ98"
             target="_blank"
@@ -80,9 +91,10 @@ const Index = () => {
             className="text-sm mb-1.5 inline-block hover:underline transition-all"
             style={{color: "hsl(var(--muted-foreground))"}}
           >
-            📍 एसबीआई बैंक के सामने, गांधी चौक, ढाका, पूर्वी चम्पारण
+            {language === "en"
+              ? "📍 Opp. SBI Bank, Gandhi Chowk, Dhaka, East Champaran"
+              : "📍 एसबीआई बैंक के सामने, गांधी चौक, ढाका, पूर्वी चम्पारण"}
           </a>
-
           <div className="flex flex-col sm:flex-row justify-center gap-3 mb-1.5 text-sm" style={{color: "hsl(var(--muted-foreground))"}}>
             <div className="flex flex-col items-center gap-0.5">
               <span>📞 +91-7979745730</span>
@@ -94,14 +106,14 @@ const Index = () => {
               <span className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7))"}}>Niraj Gupta</span>
             </div>
           </div>
-
           <p className="text-sm font-medium mb-1" style={{color: "hsl(var(--muted-foreground))"}}>
-            🕐 सुबह 7:00 — रात 11:00 बजे
+            {language === "en" ? "🕐 Mon–Sun: 7:00 AM — 11:00 PM" : "🕐 सुबह 7:00 — रात 11:00 बजे"}
           </p>
-
           <div className="mt-4 pt-4" style={{borderTop: "1px solid hsl(var(--border))"}}>
             <p className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7))"}}>
-              © 2026 भारत रेस्टोरेंट — सभी अधिकार सुरक्षित
+              {language === "en"
+                ? "© 2026 Bharat Restaurant — All rights reserved"
+                : "© 2026 भारत रेस्टोरेंट — सभी अधिकार सुरक्षित"}
             </p>
           </div>
         </div>
@@ -110,6 +122,7 @@ const Index = () => {
 
       <FloatingContact onClick={() => setContactOpen(true)} />
       <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
+      <CartModal open={cartOpen} onClose={() => setCartOpen(false)} />
     </div>
   );
 };
