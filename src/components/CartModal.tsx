@@ -34,55 +34,74 @@ export const CartModal = ({ isOpen, onClose }: CartModalProps) => {
         </DialogHeader>
 
         {cart.length === 0 ? (
-          <div className="text-center py-8 text-gray-500">
-            {t('Your cart is empty', 'आपकी टोकरी खाली है')}
+          <div className="text-center py-8 text-muted-foreground">
+            <p className="text-4xl mb-2">🛒</p>
+            <p>{t('Your cart is empty', 'आपकी टोकरी खाली है')}</p>
           </div>
         ) : (
-          <div className="space-y-4">
-            {cart.map(item => (
-              <div key={item.id} className="flex items-center gap-3 border-b pb-3">
-                <div className="flex-1">
-                  <h4 className="font-semibold">
-                    {language === 'hi' ? item.nameHi : item.name}
-                  </h4>
-                  <p className="text-sm text-gray-600">₹{item.price}</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="h-8 w-8"
-                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+          <div className="space-y-3">
+            {cart.map((item) => {
+              const displayName = language === 'en' ? item.nameEn : item.name;
+              return (
+                <div
+                  key={item.id}
+                  className="flex items-center gap-3 p-3 rounded-lg border"
+                >
+                  <div
+                    className={`w-3 h-3 rounded-sm border-2 flex-shrink-0 ${
+                      item.veg ? 'border-green-500' : 'border-red-500'
+                    }`}
                   >
-                    <Minus className="w-4 h-4" />
-                  </Button>
-                  <span className="w-8 text-center font-semibold">{item.quantity}</span>
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="h-8 w-8"
-                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                  >
-                    <Plus className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className="h-8 w-8 text-red-500"
-                    onClick={() => removeFromCart(item.id)}
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
-            ))}
+                    <div className={`w-1.5 h-1.5 rounded-full m-auto mt-0.5 ${
+                      item.veg ? 'bg-green-500' : 'bg-red-500'
+                    }`} />
+                  </div>
 
-            <div className="border-t pt-4">
-              <div className="flex justify-between items-center text-lg font-bold mb-4">
-                <span>{t('Total', 'कुल')}:</span>
-                <span>₹{totalPrice}</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold truncate">{displayName}</p>
+                    {item.quantity && (
+                      <p className="text-xs text-muted-foreground">{item.quantity}</p>
+                    )}
+                    <p className="text-sm font-bold text-primary">₹{item.price}</p>
+                  </div>
+
+                  <div className="flex items-center gap-1">
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="h-6 w-6"
+                      onClick={() => updateQuantity(item.id, item.qty - 1)}
+                    >
+                      <Minus className="h-3 w-3" />
+                    </Button>
+                    <span className="w-6 text-center text-sm font-bold">{item.qty}</span>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="h-6 w-6"
+                      onClick={() => updateQuantity(item.id, item.qty + 1)}
+                    >
+                      <Plus className="h-3 w-3" />
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="h-6 w-6 text-red-500 hover:text-red-700"
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      <Trash2 className="h-3 w-3" />
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
+
+            <div className="border-t pt-3">
+              <div className="flex justify-between items-center mb-3">
+                <span className="font-semibold">{t('Total', 'कुल')}</span>
+                <span className="font-bold text-primary text-lg">₹{totalPrice.toFixed(0)}</span>
               </div>
-              <WhatsAppCheckout />
+              <WhatsAppCheckout onClose={onClose} />
             </div>
           </div>
         )}
