@@ -92,7 +92,7 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
         </div>
 
         {/* Taglines */}
-        <p className="text-primary-foreground/90 text-lg md:text-xl mb-1 font-bold" style={{textShadow: "0 1px 4px hsl(0 0% 0% / 0.3)\"}}>
+        <p className="text-primary-foreground/90 text-lg md:text-xl mb-1 font-bold" style={{textShadow: "0 1px 4px hsl(0 0% 0% / 0.3)"}}>
           {language === 'en' ? "🍛 Pure Veg Food — Taste Like Home 🍛" : "🍛 शुद्ध शाकाहारी भोजन — घर जैसा स्वाद 🍛"}
         </p>
         <p className="text-primary-foreground/60 text-sm mb-5 italic font-medium">
