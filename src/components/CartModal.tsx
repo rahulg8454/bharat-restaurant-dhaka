@@ -109,3 +109,4 @@ export const CartModal = ({ isOpen, onClose }: CartModalProps) => {
     </Dialog>
   );
 };
+export default CartModal;
