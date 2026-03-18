@@ -6,7 +6,7 @@ import { ShoppingCart, Plus } from "lucide-react";
 
 const MenuSection = ({ category }: { category: MenuCategory }) => {
   const { language } = useLanguage();
-const { addToCart, cartItems = [] } = useCart();
+const { addToCart, cart } = useCart();
 
   const categoryTitle = language === 'en' ? category.titleEn : category.title;
  
@@ -51,12 +51,12 @@ const { addToCart, cartItems = [] } = useCart();
         {category.items.map((item, index) => {
      
           const itemName = language === 'en' ? item.nameEn : item.name;
-       const quantity =
-  cartItems.find(
+     const quantity =
+  cart.find(
     (cartItem) =>
-      cartItem.nameEn === item.nameEn &&
+      cartItem.name === item.name &&
       cartItem.categoryId === category.id
-  )?.quantity || 0;
+  )?.qty || 0;
           return (
             <div
               key={index}
