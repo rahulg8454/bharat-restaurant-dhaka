@@ -154,7 +154,7 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
             <Clock className="w-4 h-4 flex-shrink-0" style={{color: "hsl(var(--gold))\"}} />
             <span>
               {language === 'en' 
-                ? "7:00 AM — 11:00 PM (Open 7 Days)" 
+                ? "7:00 AM — 11:00 PM " 
                 : "सुबह 7:00 AM — रात 11:00 PM"}
             </span>
           </div>
