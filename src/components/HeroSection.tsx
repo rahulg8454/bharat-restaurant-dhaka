@@ -50,33 +50,41 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
           </p>
         </div>
 
-        {/* Restaurant name */}
-        <div className="mb-4">
-          <h1 
-            className="font-extrabold drop-shadow-2xl leading-tight"
-            style={{
-              fontSize: "clamp(3rem, 12vw, 5.5rem)",
-              fontFamily: "'Tiro Devanagari Hindi', 'Baloo 2', serif",
-              textShadow: "0 2px 16px hsl(0 0% 0% / 0.4), 0 0 40px hsl(var(--gold) / 0.3)",
-              letterSpacing: "0.04em",
-              background: "linear-gradient(135deg, #fff 0%, hsl(var(--gold-light)) 50%, #fff 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text"
-            }}
-          >
-            {language === 'en' ? "Bharat Restaurant" : "भारत रेस्टोरेंट"}
-          </h1>
-                 {/* Decorative divider */}
-          <div className="flex items-center justify-center gap-3 mt-3 mb-2">
-            <div className="h-px flex-1 max-w-[80px] opacity-50" style={{background: "linear-gradient(to right, transparent, hsl(var(--gold)))"}} />
-            <div className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full" style={{background: "hsl(var(--gold))"}} />
-              <span className="text-lg" style={{color: "hsl(var(--gold))"}}>✦</span>
-              <span className="w-1.5 h-1.5 rounded-full" style={{background: "hsl(var(--gold))"}} />
-            </div>
-            <div className="h-px flex-1 max-w-[80px] opacity-50" style={{background: "linear-gradient(to left, transparent, hsl(var(--gold)))"}} />
-          </div>
+    {/* Restaurant name */}
+<div className="mb-4">
+  <h1 
+    className="font-extrabold drop-shadow-2xl leading-tight"
+    style={{
+      fontSize: "clamp(3rem, 12vw, 5.5rem)",
+      fontFamily: "'Tiro Devanagari Hindi', 'Baloo 2', serif",
+      textShadow: "0 2px 16px hsl(0 0% 0% / 0.4), 0 0 40px hsl(var(--gold) / 0.3)",
+      letterSpacing: "0.04em",
+      background: "linear-gradient(135deg, #fff 0%, hsl(var(--gold-light)) 50%, #fff 100%)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      backgroundClip: "text"
+    }}
+  >
+    {language === 'en' ? "Bharat Restaurant" : "भारत रेस्टोरेंट"}
+  </h1>
+
+  {/* Decorative divider */}
+  <div className="flex items-center justify-center gap-3 mt-3 mb-2">
+    <div
+      className="h-px flex-1 max-w-[80px] opacity-50"
+      style={{ background: "linear-gradient(to right, transparent, hsl(var(--gold)))" }}
+    />
+    <div className="flex items-center gap-1.5">
+      <span className="w-1.5 h-1.5 rounded-full" style={{ background: "hsl(var(--gold))" }} />
+      <span className="text-lg" style={{ color: "hsl(var(--gold))" }}>✦</span>
+      <span className="w-1.5 h-1.5 rounded-full" style={{ background: "hsl(var(--gold))" }} />
+    </div>
+    <div
+      className="h-px flex-1 max-w-[80px] opacity-50"
+      style={{ background: "linear-gradient(to left, transparent, hsl(var(--gold)))" }}
+    />
+  </div>
+</div>
 
 
         {/* 100% Pure Veg badge */}
