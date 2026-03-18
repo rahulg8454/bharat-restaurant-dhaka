@@ -155,7 +155,7 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
             <span>
               {language === 'en' 
                 ? "7:00 AM — 11:00 PM (Open 7 Days)" 
-                : "सुबह 7:00 AM — रात 11:00 PM (सातों दिन खुला)"}
+                : "सुबह 7:00 AM — रात 11:00 PM"}
             </span>
           </div>
         </div>
