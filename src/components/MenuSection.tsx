@@ -2,11 +2,11 @@ import { MenuCategory } from "@/data/menuData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Plus } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 
 const MenuSection = ({ category }: { category: MenuCategory }) => {
   const { language } = useLanguage();
-const { addToCart, cart } = useCart();
+const { addToCart, cart, updateQuantity } = useCart();
 
   const categoryTitle = language === 'en' ? category.titleEn : category.title;
  
@@ -93,11 +93,7 @@ const { addToCart, cart } = useCart();
               </div>
 
               {/* Price and Add button */}
-              <div className="flex items-center gap-2 shrink-0">
-                <span className="text-sm font-bold text-primary">
-                  ₹{item.price}
-                </span>
-              <div className="flex items-center gap-1">
+              {quantity === 0 ? (
   <Button
     size="sm"
     variant="outline"
@@ -117,13 +113,43 @@ const { addToCart, cart } = useCart();
   >
     <Plus className="h-3 w-3" />
   </Button>
+) : (
+  <div className="flex items-center gap-2 border border-primary rounded-full px-2 py-1">
+    <button
+      onClick={() =>
+       updateQuantity(
+  `${category.id}-${item.nameEn}`,
+  quantity - 1
+)
+      }
+      className="text-primary"
+    >
+      <Minus size={14} />
+    </button>
 
- {quantity > 0 && (
-  <span className="text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
-    +{quantity}
-  </span>
+    <span className="text-sm font-bold text-primary">
+      {quantity}
+    </span>
+
+    <button
+      onClick={() =>
+        addToCart({
+          name: item.name,
+          nameEn: item.nameEn,
+          price: item.price,
+          quantity: 1,
+          veg: item.veg,
+          categoryId: category.id,
+          categoryTitle: category.title,
+          categoryTitleEn: category.titleEn,
+        })
+      }
+      className="text-primary"
+    >
+      <Plus size={14} />
+    </button>
+  </div>
 )}
-</div>
               </div>
             </div>
           );
