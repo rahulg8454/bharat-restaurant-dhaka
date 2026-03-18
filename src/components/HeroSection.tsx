@@ -67,17 +67,17 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
           >
             {language === 'en' ? "Bharat Restaurant" : "भारत रेस्टोरेंट"}
           </h1>
-          {/* Decorative divider */}
+                 {/* Decorative divider */}
           <div className="flex items-center justify-center gap-3 mt-3 mb-2">
-            <div className="h-px flex-1 max-w-[80px] opacity-50" style={{background: "linear-gradient(to right, transparent, hsl(var(--gold)))\"}} />
+            <div className="h-px flex-1 max-w-[80px] opacity-50" style={{background: "linear-gradient(to right, transparent, hsl(var(--gold)))"}} />
             <div className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full" style={{background: "hsl(var(--gold))\"}} />
-              <span className="text-lg" style={{color: "hsl(var(--gold))\"}}>✦</span>
-              <span className="w-1.5 h-1.5 rounded-full" style={{background: "hsl(var(--gold))\"}} />
+              <span className="w-1.5 h-1.5 rounded-full" style={{background: "hsl(var(--gold))"}} />
+              <span className="text-lg" style={{color: "hsl(var(--gold))"}}>✦</span>
+              <span className="w-1.5 h-1.5 rounded-full" style={{background: "hsl(var(--gold))"}} />
             </div>
-            <div className="h-px flex-1 max-w-[80px] opacity-50" style={{background: "linear-gradient(to left, transparent, hsl(var(--gold)))\"}} />
+            <div className="h-px flex-1 max-w-[80px] opacity-50" style={{background: "linear-gradient(to left, transparent, hsl(var(--gold)))"}} />
           </div>
-        </div>
+
 
         {/* 100% Pure Veg badge */}
         <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-bold mb-4 shadow-lg" style={{
