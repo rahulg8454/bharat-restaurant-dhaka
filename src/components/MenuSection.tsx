@@ -9,12 +9,7 @@ const MenuSection = ({ category }: { category: MenuCategory }) => {
   const { addToCart, cartItems } = useCart();
 
   const categoryTitle = language === 'en' ? category.titleEn : category.title;
-  const quantity =
-  cartItems.find(
-    (cartItem) =>
-      cartItem.name === item.name &&
-      cartItem.categoryId === category.id
-  )?.quantity || 0;
+ 
 
   return (
     <section id={category.id} className="max-w-3xl mx-auto px-3 py-4">
@@ -54,7 +49,14 @@ const MenuSection = ({ category }: { category: MenuCategory }) => {
       {/* Menu Items Grid */}
       <div className="space-y-2">
         {category.items.map((item, index) => {
+     
           const itemName = language === 'en' ? item.nameEn : item.name;
+       const quantity =
+  cartItems.find(
+    (cartItem) =>
+      cartItem.name === item.name &&
+      cartItem.categoryId === category.id
+  )?.quantity || 0;
           return (
             <div
               key={index}
