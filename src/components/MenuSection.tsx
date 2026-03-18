@@ -175,7 +175,7 @@ const { addToCart, cart, updateQuantity } = useCart();
     </div>
   )}
 </div>
-            </div>
+      
           );
         })}
       </div>
