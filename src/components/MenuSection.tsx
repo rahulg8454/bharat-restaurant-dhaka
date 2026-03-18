@@ -6,7 +6,7 @@ import { ShoppingCart, Plus } from "lucide-react";
 
 const MenuSection = ({ category }: { category: MenuCategory }) => {
   const { language } = useLanguage();
-  const { addToCart, cartItems } = useCart();
+const { addToCart, cartItems = [] } = useCart();
 
   const categoryTitle = language === 'en' ? category.titleEn : category.title;
  
