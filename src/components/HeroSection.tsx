@@ -109,13 +109,13 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
             background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.6), transparent)"
           }} />
           <p className="text-sm font-semibold leading-relaxed">
-            🎂 <span className="font-bold" style={{color: "hsl(var(--gold-light))\"}}>
+            🎂 <span className="font-bold" style={{color: "hsl(var(--gold-light))"}}>
               {language === 'en' ? "For Birthdays, Anniversaries & Celebrations" : "बर्थडे पार्टी, एनिवर्सरी व सेलिब्रेशन के लिए"}
             </span>
             <br />
             {language === 'en' ? "Customized Cakes & Orders Available" : "कस्टमाइज़्ड केक व ऑर्डर उपलब्ध"}
             <br />
-            <span className="font-bold" style={{color: "hsl(var(--gold-light))\"}}>
+            <span className="font-bold" style={{color: "hsl(var(--gold-light))"}}>
               {language === 'en' ? "— Give us a chance to serve you 🎉" : "— एक बार सेवा का अवसर अवश्य दें 🎉"}
             </span>
           </p>
@@ -139,7 +139,7 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
               backdropFilter: "blur(8px)"
             }}
           >
-            <MapPin className="w-4 h-4 flex-shrink-0" style={{color: "hsl(var(--gold))\"}} />
+            <MapPin className="w-4 h-4 flex-shrink-0" style={{color: "hsl(var(--gold))"}} />
             <span>
               {language === 'en' 
                 ? "Opp. SBI Bank, Gandhi Chowk, Dhaka, East Champaran" 
@@ -151,7 +151,7 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
             border: "1px solid hsl(var(--primary-foreground) / 0.15)",
             backdropFilter: "blur(8px)"
           }}>
-            <Clock className="w-4 h-4 flex-shrink-0" style={{color: "hsl(var(--gold))\"}} />
+            <Clock className="w-4 h-4 flex-shrink-0" style={{color: "hsl(var(--gold))"}} />
             <span>
               {language === 'en' 
                 ? "7:00 AM — 11:00 PM " 
@@ -179,16 +179,16 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
         {/* Phone numbers */}
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <div className="flex flex-col items-center gap-0.5">
-            <a href="tel:7979745730" className="inline-flex items-center gap-1.5 font-bold text-base hover:underline transition-colors" style={{color: "hsl(var(--gold))\"}}>
+            <a href="tel:7979745730" className="inline-flex items-center gap-1.5 font-bold text-base hover:underline transition-colors" style={{color: "hsl(var(--gold))"}}>
               📞 +91-7979745730
-              <span className="text-xs" style={{color: "hsl(var(--primary-foreground) / 0.55)\"}}>Vivek Gupta</span>
+              <span className="text-xs" style={{color: "hsl(var(--primary-foreground) / 0.55)"}}>Vivek Gupta</span>
             </a>
           </div>
           <span className="hidden sm:flex text-primary-foreground/20 self-center text-xl">|</span>
           <div className="flex flex-col items-center gap-0.5">
-            <a href="tel:9471217870" className="inline-flex items-center gap-1.5 font-bold text-base hover:underline transition-colors" style={{color: "hsl(var(--gold))\"}}>
+            <a href="tel:9471217870" className="inline-flex items-center gap-1.5 font-bold text-base hover:underline transition-colors" style={{color: "hsl(var(--gold))"}}>
               📞 +91-9471217870
-              <span className="text-xs" style={{color: "hsl(var(--primary-foreground) / 0.55)\"}}>Niraj Gupta</span>
+              <span className="text-xs" style={{color: "hsl(var(--primary-foreground) / 0.55)"}}>Niraj Gupta</span>
             </a>
           </div>
         </div>
