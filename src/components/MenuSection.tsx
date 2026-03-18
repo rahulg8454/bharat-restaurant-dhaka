@@ -114,7 +114,6 @@ const { addToCart, cart, updateQuantity } = useCart();
     <Plus className="h-3 w-3" />
   </Button>
 ) : (
-{/* Price and Add button */}
 <div className="flex items-center gap-2 shrink-0">
   <span className="text-sm font-bold text-primary">
     ₹{item.price}
