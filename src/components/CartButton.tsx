@@ -13,7 +13,7 @@ export const CartButton = () => {
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 z-50 rounded-full w-16 h-16 shadow-lg"
+       className="fixed bottom-24 right-4 z-50 rounded-full w-16 h-16 shadow-lg"
         size="icon"
       >
         <ShoppingCart className="w-6 h-6" />
