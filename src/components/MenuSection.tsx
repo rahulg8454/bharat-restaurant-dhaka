@@ -67,53 +67,31 @@ const { addToCart, cart, updateQuantity } = useCart();
               }}
             >
               {/* Item info */}
-              <div className="flex items-center gap-3 flex-1 min-w-0">
-                {/* Veg/Non-veg indicator */}
-                <div
-                  className={`w-4 h-4 shrink-0 rounded-sm border-2 flex items-center justify-center ${
-                    item.veg
-                      ? "border-green-500"
-                      : "border-red-500"
-                  }`}
-                >
-                  <div
-                    className={`w-2 h-2 rounded-full ${
-                      item.veg ? "bg-green-500" : "bg-red-500"
-                    }`}
-                  />
-                </div>
+           <div className="flex items-center gap-3 flex-1 min-w-0">
+  {/* Veg indicator */}
+  <div
+    className={`w-4 h-4 shrink-0 rounded-sm border-2 flex items-center justify-center ${
+      item.veg ? "border-green-500" : "border-red-500"
+    }`}
+  >
+    <div
+      className={`w-2 h-2 rounded-full ${
+        item.veg ? "bg-green-500" : "bg-red-500"
+      }`}
+    />
+  </div>
 
-                {/* Item name and quantity */}
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold truncate">{itemName}</p>
-                  {item.quantity && (
-                    <p className="text-xs text-muted-foreground">{item.quantity}</p>
-                  )}
-                </div>
-              </div>
+  {/* Item name */}
+  <div className="min-w-0">
+    <p className="text-sm font-semibold truncate">{itemName}</p>
+    {item.quantity && (
+      <p className="text-xs text-muted-foreground">{item.quantity}</p>
+    )}
+  </div>
+</div>
 
               {/* Price and Add button */}
-              {quantity === 0 ? (
-  <Button
-    size="sm"
-    variant="outline"
-    className="h-7 w-7 p-0 rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-    onClick={() =>
-      addToCart({
-        name: item.name,
-        nameEn: item.nameEn,
-        price: item.price,
-        quantity: 1,
-        veg: item.veg,
-        categoryId: category.id,
-        categoryTitle: category.title,
-        categoryTitleEn: category.titleEn,
-      })
-    }
-  >
-    <Plus className="h-3 w-3" />
-  </Button>
-) : (
+             {/* Price and Add button */}
 <div className="flex items-center gap-2 shrink-0">
   <span className="text-sm font-bold text-primary">
     ₹{item.price}
@@ -143,7 +121,7 @@ const { addToCart, cart, updateQuantity } = useCart();
       <button
         onClick={() =>
           updateQuantity(
-            `${category.id}-${item.nameEn}`,
+            `${category.id}-${item.name}`
             quantity - 1
           )
         }
@@ -175,6 +153,7 @@ const { addToCart, cart, updateQuantity } = useCart();
     </div>
   )}
 </div>
+              </div>
       
           );
         })}
