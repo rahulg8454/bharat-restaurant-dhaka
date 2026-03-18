@@ -107,7 +107,7 @@ const MenuSection = ({ category }: { category: MenuCategory }) => {
         name: item.name,
         nameEn: item.nameEn,
         price: item.price,
-        quantity: 1,
+        quantity: number,
         veg: item.veg,
         categoryId: category.id,
         categoryTitle: category.title,
