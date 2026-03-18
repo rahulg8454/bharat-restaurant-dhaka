@@ -2,7 +2,7 @@ import { Phone } from "lucide-react";
 
 const FloatingContact = ({ onClick }: { onClick: () => void }) => {
   return (
-className="fixed bottom-32 right-5 sm:bottom-6 z-50 flex flex-col items-center gap-3"
+    <div className="fixed bottom-32 right-5 sm:bottom-6 z-50 flex flex-col items-center gap-3">
       <button
         onClick={onClick}
         className="w-16 h-16 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 relative pulse-ring shadow-2xl"
@@ -14,6 +14,7 @@ className="fixed bottom-32 right-5 sm:bottom-6 z-50 flex flex-col items-center g
       >
         <Phone className="w-7 h-7" style={{ color: "hsl(16 82% 18%)" }} />
       </button>
+
       <span
         className="text-[10px] font-bold px-2 py-0.5 rounded-full"
         style={{
