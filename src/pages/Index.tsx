@@ -98,19 +98,19 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-3 mb-1.5 text-sm" style={{color: "hsl(var(--muted-foreground))"}}>
             <div className="flex flex-col items-center gap-0.5">
               <span>📞 +91-7979745730</span>
-              <span className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7))"}}>Vivek Gupta</span>
+              <span className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7)"}}>Vivek Gupta</span>
             </div>
             <span className="hidden sm:inline opacity-40">|</span>
             <div className="flex flex-col items-center gap-0.5">
               <span>📞 +91-9471217870</span>
-              <span className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7))"}}>Niraj Gupta</span>
+              <span className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7)"}}>Niraj Gupta</span>
             </div>
           </div>
           <p className="text-sm font-medium mb-1" style={{color: "hsl(var(--muted-foreground))"}}>
             {language === "en" ? "🕐 Mon–Sun: 7:00 AM — 11:00 PM" : "🕐 सुबह 7:00 — रात 11:00 बजे"}
           </p>
           <div className="mt-4 pt-4" style={{borderTop: "1px solid hsl(var(--border))"}}>
-            <p className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7))"}}>
+            <p className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7)"}}>
               {language === "en"
                 ? "© 2026 Bharat Restaurant — All rights reserved"
                 : "© 2026 भारत रेस्टोरेंट — सभी अधिकार सुरक्षित"}
