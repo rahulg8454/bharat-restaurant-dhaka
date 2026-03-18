@@ -107,7 +107,7 @@ const { addToCart, cartItems = [] } = useCart();
         name: item.name,
         nameEn: item.nameEn,
         price: item.price,
-        quantity: number,
+        quantity: 1,
         veg: item.veg,
         categoryId: category.id,
         categoryTitle: category.title,
