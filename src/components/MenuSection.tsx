@@ -114,43 +114,68 @@ const { addToCart, cart, updateQuantity } = useCart();
     <Plus className="h-3 w-3" />
   </Button>
 ) : (
-  <div className="flex items-center gap-2 border border-primary rounded-full px-2 py-1">
-    <button
-      onClick={() =>
-       updateQuantity(
-  `${category.id}-${item.nameEn}`,
-  quantity - 1
-)
-      }
-      className="text-primary"
-    >
-      <Minus size={14} />
-    </button>
+{/* Price and Add button */}
+<div className="flex items-center gap-2 shrink-0">
+  <span className="text-sm font-bold text-primary">
+    ₹{item.price}
+  </span>
 
-    <span className="text-sm font-bold text-primary">
-      {quantity}
-    </span>
-
-    <button
+  {quantity === 0 ? (
+    <Button
+      size="sm"
+      variant="outline"
+      className="h-7 w-7 p-0 rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
       onClick={() =>
         addToCart({
           name: item.name,
           nameEn: item.nameEn,
           price: item.price,
-          quantity: 1,
           veg: item.veg,
           categoryId: category.id,
           categoryTitle: category.title,
           categoryTitleEn: category.titleEn,
         })
       }
-      className="text-primary"
     >
-      <Plus size={14} />
-    </button>
-  </div>
-)}
-              </div>
+      <Plus className="h-3 w-3" />
+    </Button>
+  ) : (
+    <div className="flex items-center gap-2 border border-primary rounded-full px-2 py-1">
+      <button
+        onClick={() =>
+          updateQuantity(
+            `${category.id}-${item.nameEn}`,
+            quantity - 1
+          )
+        }
+        className="text-primary"
+      >
+        <Minus size={14} />
+      </button>
+
+      <span className="text-sm font-bold text-primary">
+        {quantity}
+      </span>
+
+      <button
+        onClick={() =>
+          addToCart({
+            name: item.name,
+            nameEn: item.nameEn,
+            price: item.price,
+            veg: item.veg,
+            categoryId: category.id,
+            categoryTitle: category.title,
+            categoryTitleEn: category.titleEn,
+          })
+        }
+        className="text-primary"
+      >
+        <Plus size={14} />
+      </button>
+    </div>
+  )}
+</div>
             </div>
           );
         })}
