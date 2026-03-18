@@ -8,6 +8,7 @@ export const CartButton = () => {
   const { totalItems } = useCart();
   const [isOpen, setIsOpen] = useState(false);
 
+
   return (
     <>
       <Button
@@ -26,3 +27,4 @@ export const CartButton = () => {
     </>
   );
 };
+export default CartButton; 
