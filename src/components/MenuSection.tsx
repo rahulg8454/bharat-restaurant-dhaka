@@ -121,7 +121,7 @@ const { addToCart, cart, updateQuantity } = useCart();
       <button
         onClick={() =>
           updateQuantity(
-            `${category.id}-${item.name} ,`
+            `${category.id}-${item.name} `,
             quantity - 1
           )
         }
