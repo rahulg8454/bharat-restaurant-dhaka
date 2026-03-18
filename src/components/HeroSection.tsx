@@ -86,7 +86,7 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
           boxShadow: "0 4px 16px hsl(140 65% 20% / 0.4), inset 0 1px 0 hsl(140 60% 50% / 0.2)"
         }}>
           <span className="text-base">🌿</span>
-          <span style={{color: "hsl(140 70% 72%)\"}}>
+          <span style={{color: "hsl(140 70% 72%)"}}>
             {language === 'en' ? "100% Pure Vegetarian Restaurant" : "100% शुद्ध शाकाहारी रेस्टोरेंट"}
           </span>
         </div>
