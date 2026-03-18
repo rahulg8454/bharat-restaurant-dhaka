@@ -54,7 +54,7 @@ const { addToCart, cartItems = [] } = useCart();
        const quantity =
   cartItems.find(
     (cartItem) =>
-      cartItem.name === item.name &&
+      cartItem.nameEn === item.nameEn &&
       cartItem.categoryId === category.id
   )?.quantity || 0;
           return (
@@ -118,11 +118,11 @@ const { addToCart, cartItems = [] } = useCart();
     <Plus className="h-3 w-3" />
   </Button>
 
-  {quantity > 0 && (
-    <span className="text-xs font-bold text-primary">
-      +{quantity}
-    </span>
-  )}
+ {quantity > 0 && (
+  <span className="text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+    +{quantity}
+  </span>
+)}
 </div>
               </div>
             </div>
