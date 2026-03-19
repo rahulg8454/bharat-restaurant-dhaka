@@ -132,20 +132,20 @@ const MenuSection = ({ category }: { category: MenuCategory }) => {
                   </Button>
                 ) : (
                   <div className="flex items-center gap-2 border rounded-full px-2 py-1">
-                    <button
-                    onClick={() => {
-  const cartItem = cart.find((c) =>
-    c.nameEn.startsWith(item.nameEn)
-  );
+                  <button
+  onClick={() => {
+    const cartItem = cart.find((c) =>
+      c.nameEn.startsWith(item.nameEn)
+    );
 
-  if (cartItem) {
-    updateQuantity(cartItem.id, cartItem.qty - 1);
-  }
-}}
-                      }
-                    >
-                      <Minus size={14} />
-                    </button>
+    if (cartItem) {
+      updateQuantity(cartItem.id, cartItem.qty - 1);
+    }
+  }}
+  className="text-primary"
+>
+  <Minus size={14} />
+</button>
 
                     <span>{quantity}</span>
 
