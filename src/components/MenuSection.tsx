@@ -133,11 +133,15 @@ const MenuSection = ({ category }: { category: MenuCategory }) => {
                 ) : (
                   <div className="flex items-center gap-2 border rounded-full px-2 py-1">
                     <button
-                      onClick={() =>
-                        updateQuantity(
-                          `${category.id}-${item.nameEn}`,
-                          quantity - 1
-                        )
+                    onClick={() => {
+  const cartItem = cart.find((c) =>
+    c.nameEn.startsWith(item.nameEn)
+  );
+
+  if (cartItem) {
+    updateQuantity(cartItem.id, cartItem.qty - 1);
+  }
+}}
                       }
                     >
                       <Minus size={14} />
