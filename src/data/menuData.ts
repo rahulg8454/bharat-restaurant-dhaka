@@ -243,8 +243,8 @@ export const menuData: MenuCategory[] = [
     emoji: "🍜",
     image: chineseImg,
   items: [
-    { name: "वेज मंचूरियन (ड्राई+ग्रेवी)", nameEn: "Veg Manchurian (Dry+Gravy)", price: "80/150", options: ["Half", "Full"], options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
-    { name: "पनीर चिल्ली (ड्राई+ग्रेवी)", nameEn: "Paneer Chilli (Dry+Gravy)", price: "100/180", options: ["Half", "Full"], options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
+    { name: "वेज मंचूरियन (ड्राई+ग्रेवी)", nameEn: "Veg Manchurian (Dry+Gravy)", price: "80/150", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
+    { name: "पनीर चिल्ली (ड्राई+ग्रेवी)", nameEn: "Paneer Chilli (Dry+Gravy)", price: "100/180", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
     { name: "पनीर मंचूरियन (ड्राई+ग्रेवी)", nameEn: "Paneer Manchurian (Dry/Gravy)", price: "200"},
     { name: "मशरूम चिल्ली (ड्राई+ग्रेवी)", nameEn: "Mushroom Chilli (Dry/Gravy)", price: "200"},
     { name: "पोटैटो चिल्ली (ड्राई)", nameEn: "Potato Chilli (Dry)", price: "150"},
