@@ -8,10 +8,24 @@ import { useState } from "react";
 const MenuSection = ({ category }: { category: MenuCategory }) => {
   const { language } = useLanguage();
 const { addToCart, cart, updateQuantity } = useCart();
+
+  const [selectedItem, setSelectedItem] = useState<any>(null);
   
 
   const categoryTitle = language === 'en' ? category.titleEn : category.title;
-  const [selectedItem, setSelectedItem] = useState<any>(null);
+
+  const handleOptionSelect = (item: any, category: any, option: any) => {
+  addToCart({
+    name: `${item.name} (${option.label})`,
+    nameEn: `${item.nameEn} (${option.labelEn})`,
+    price: item.price,
+    categoryId: category.id,
+    categoryTitle: category.title,
+    categoryTitleEn: category.titleEn,
+  });
+
+  setSelectedItem(null);
+};
  
 
   return (
@@ -51,14 +65,17 @@ const { addToCart, cart, updateQuantity } = useCart();
 
       {/* Menu Items Grid */}
       <div className="space-y-2">
-        {category.items.map((item, index) => {
-      const itemId = `${category.id}-${item.name}`;
-     
-          const itemName = language === 'en' ? item.nameEn : item.name;
-   
-const quantity =
-  cart.find((cartItem) => cartItem.id === itemId)?.qty || 0;
-          return (
+       {category.items.map((item, index) => {
+
+  const itemId = `${category.id}-${item.nameEn}`;
+
+  const itemName =
+    language === 'en' ? item.nameEn : item.name;
+
+  const quantity =
+    cart.find((cartItem) => cartItem.id === itemId)?.qty || 0;
+
+  return (
             <div
               key={index}
               className="menu-item-card flex items-center justify-between px-4 py-3 rounded-xl gap-3"
@@ -124,7 +141,7 @@ const quantity =
     <div className="flex items-center gap-2 border border-primary rounded-full px-2 py-1">
       <button
         onClick={() =>
-        updateQuantity(itemId, quantity - 1)
+     updateQuantity(`${category.id}-${item.nameEn}`, quantity - 1)
         }
         className="text-primary"
       >
@@ -162,6 +179,38 @@ const quantity =
           );
         })}
       </div>
+      {selectedItem && (
+  <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    <div className="bg-white rounded-xl p-4 w-72">
+      <h3 className="font-bold mb-3 text-center">
+        {language === "en"
+          ? selectedItem.item.nameEn
+          : selectedItem.item.name}
+      </h3>
+
+      <div className="flex flex-col gap-2">
+        {selectedItem.item.options.map((opt: any, i: number) => (
+          <button
+            key={i}
+            className="border rounded-lg py-2 hover:bg-primary hover:text-white"
+            onClick={() =>
+              handleOptionSelect(selectedItem.item, selectedItem.category, opt)
+            }
+          >
+            {language === "en" ? opt.labelEn : opt.label}
+          </button>
+        ))}
+      </div>
+
+      <button
+        onClick={() => setSelectedItem(null)}
+        className="mt-3 text-sm text-gray-500"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+)}
     </section>
   );
 };
