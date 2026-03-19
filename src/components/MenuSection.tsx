@@ -23,6 +23,7 @@ const MenuSection = ({ category }: { category: MenuCategory }) => {
     if (
       option.labelEn.toLowerCase() === "full" ||
       option.labelEn.toLowerCase() === "large" ||
+      option.labelEn.toLowerCase() === "icecream" ||
       option.labelEn.toLowerCase() === "cone" ||
       option.labelEn.toLowerCase() === "gravy"
     ) {
