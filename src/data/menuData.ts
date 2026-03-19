@@ -33,7 +33,9 @@ export interface MenuItem {
   nameEn: string;
   price: string;
   quantity?: string;
-  veg: boolean;
+  quantityEn?: string;
+  
+  
 }
 
 export interface MenuCategory {
@@ -49,25 +51,18 @@ export const menuData: MenuCategory[] = [
   {
     id: "nasta",
     title: "नाश्ता",
-    titleEn: "Breakfast",
+    titleEn: "Nasta",
     emoji: "🥞",
     image: nastaImg,
     items: [
-      { name: "पूरी सब्जी", nameEn: "Puri Sabzi", price: "45", quantity: "5 पीस", veg: true },
-      { name: "छोले भटूरे", nameEn: "Chole Bhature", price: "65", quantity: "2 पीस", veg: true },
-      { name: "हरी मिर्च पराठा", nameEn: "Green Chilli Paratha", price: "35", quantity: "1 पीस", veg: true },
-      { name: "लाल मिर्च पराठा", nameEn: "Red Chilli Paratha", price: "30", quantity: "1 पीस", veg: true },
-      { name: "अजवाइन पराठा", nameEn: "Ajwain Paratha", price: "35", quantity: "1 पीस", veg: true },
-      { name: "सत्तू पराठा", nameEn: "Sattu Paratha", price: "45", quantity: "1 पीस", veg: true },
-      { name: "आलू पराठा", nameEn: "Aloo Paratha", price: "40", quantity: "1 पीस", veg: true },
-      { name: "पनीर पराठा", nameEn: "Paneer Paratha", price: "60", quantity: "1 पीस", veg: true },
-      { name: "मिशी रोटी", nameEn: "Missi Roti", price: "30", quantity: "1 पीस", veg: true },
-      { name: "सादा पराठा", nameEn: "Plain Paratha", price: "20", quantity: "1 पीस", veg: true },
-      { name: "पोहा", nameEn: "Poha", price: "30", veg: true },
-      { name: "ब्रेड ऑमलेट", nameEn: "Bread Omelette", price: "45", quantity: "2 पीस", veg: false },
-      { name: "मैगी", nameEn: "Maggi", price: "35", veg: true },
-      { name: "अंडा मैगी", nameEn: "Egg Maggi", price: "50", veg: false },
-      { name: "पनीर मैगी", nameEn: "Paneer Maggi", price: "55", veg: true },
+      { name: "पूरी सब्जी", nameEn: "Puri Sabzi", price: "45", quantity: "5 पीस", quantityEn: "5 pcs"},
+      { name: "छोले भटूरे", nameEn: "Chole Bhature", price: "65", quantity: "2 पीस", quantityEn: "2 pcs" },
+      { name: "हरी मिर्च पराठा", nameEn: "Green Chilli Paratha", price: "35"},
+      { name: "लाल मिर्च पराठा", nameEn: "Red Chilli Paratha", price: "30" },
+      { name: "अजवाइन पराठा", nameEn: "Ajwain Paratha", price: "35" },
+      { name: "आलू पराठा", nameEn: "Aloo Paratha", price: "30"},
+      { name: "पनीर पराठा", nameEn: "Paneer Paratha", price: "40" },
+
     ],
   },
   {
@@ -77,11 +72,11 @@ export const menuData: MenuCategory[] = [
     emoji: "🍡",
     image: pakodaImg,
     items: [
-      { name: "मिक्स पकोड़ा", nameEn: "Mix Pakoda", price: "160/85", quantity: "फुल/हाफ", veg: true },
-      { name: "पनीर पकोड़ा", nameEn: "Paneer Pakoda", price: "240/130", quantity: "फुल/हाफ", veg: true },
-      { name: "आलू पकोड़ा", nameEn: "Aloo Pakoda", price: "120/70", quantity: "फुल/हाफ", veg: true },
-      { name: "प्याज पकोड़ा", nameEn: "Onion Pakoda", price: "140/80", quantity: "फुल/हाफ", veg: true },
-      { name: "ब्रेड पकोड़ा", nameEn: "Bread Pakoda", price: "20", quantity: "1 पीस", veg: true },
+
+  { name: "पनीर पकोड़ा", nameEn: "Paneer Pakoda", price: "120", quantity: "8 पीस", quantityEn: "8 pcs"},
+    { name: "वेज पकोड़ा", nameEn: "Veg Pakoda", price: "90", quantity: "8 पीस", quantityEn: "8 pcs"},
+    { name: "वेज कटलेट", nameEn: "Veg Cutlet", price: "60", quantity: "4 पीस", quantityEn: "4 pcs"},
+    { name: "पनीर कटलेट", nameEn: "Paneer Cutlet", price: "110", quantity: "4 पीस", quantityEn: "4 pcs"}
     ],
   },
   {
@@ -91,9 +86,9 @@ export const menuData: MenuCategory[] = [
     emoji: "🥪",
     image: pavBhajiImg,
     items: [
-      { name: "बटर पाव भाजी", nameEn: "Butter Pav Bhaji", price: "70", quantity: "2 पाव", veg: true },
-      { name: "पनीर पाव भाजी", nameEn: "Paneer Pav Bhaji", price: "90", quantity: "2 पाव", veg: true },
-      { name: "एक्स्ट्रा पाव", nameEn: "Extra Pav", price: "10", quantity: "1 पीस", veg: true },
+    { name: "पाव भाजी", nameEn: "Pav Bhaji", price: "80", quantity: "3 पीस", quantityEn: "3 pcs"},
+    { name: "पाव भाजी (डबल बटर)", nameEn: "Pav Bhaji (Double Butter)", price: "90", quantity: "3 पीस", quantityEn: "3 pcs"},
+    { name: "अतिरिक्त पाव", nameEn: "Extra Pav", price: "30", quantity: "2 पीस", quantityEn: "2 pcs"}
     ],
   },
   {
@@ -103,10 +98,14 @@ export const menuData: MenuCategory[] = [
     emoji: "🍔",
     image: burgerImg,
     items: [
-      { name: "वेज बर्गर", nameEn: "Veg Burger", price: "40", veg: true },
-      { name: "चीज बर्गर", nameEn: "Cheese Burger", price: "55", veg: true },
-      { name: "पनीर बर्गर", nameEn: "Paneer Burger", price: "60", veg: true },
-      { name: "चिकन बर्गर", nameEn: "Chicken Burger", price: "70", veg: false },
+   { name: "वेज बर्गर", nameEn: "Veg Burger", price: "40"},
+    { name: "पनीर बर्गर", nameEn: "Paneer Burger", price: "50"},
+    { name: "वेज चीज बर्गर", nameEn: "Veg Cheese Burger", price: "60"},
+    { name: "पनीर चीज बर्गर", nameEn: "Paneer Cheese Burger", price: "70"},
+    { name: "वेज बर्गर विद फ्रेंच फ्राई", nameEn: "Veg Burger with French Fries", price: "70"},
+    { name: "पनीर बर्गर विद फ्रेंच फ्राई", nameEn: "Paneer Burger with French Fries", price: "80"},
+    { name: "डबल टिक्की बर्गर", nameEn: "Double Tikki Burger", price: "100"}
+    
     ],
   },
   {
@@ -116,50 +115,61 @@ export const menuData: MenuCategory[] = [
     emoji: "🥪",
     image: sandwichImg,
     items: [
-      { name: "वेज सैंडविच", nameEn: "Veg Sandwich", price: "35", veg: true },
-      { name: "ग्रिल सैंडविच", nameEn: "Grill Sandwich", price: "50", veg: true },
-      { name: "पनीर सैंडविच", nameEn: "Paneer Sandwich", price: "60", veg: true },
-      { name: "चिकन सैंडविच", nameEn: "Chicken Sandwich", price: "75", veg: false },
+          { name: "वेज सैंडविच", nameEn: "Veg Sandwich", price: "30"},
+    { name: "पनीर सैंडविच", nameEn: "Paneer Sandwich", price: "50"},
+    { name: "फ्रेंच फ्राई", nameEn: "French Fries", price: "90"},
+    { name: "ग्रिल वेज सैंडविच", nameEn: "Grill Veg Sandwich", price: "100"},
+    { name: "कोल्ड वेज सैंडविच", nameEn: "Cold Veg Sandwich", price: "50"},
+    { name: "पनीर ग्रिल सैंडविच", nameEn: "Paneer Grill Sandwich", price: "140"},
+    { name: "मशरूम ग्रिल सैंडविच", nameEn: "Mushroom Grill Sandwich", price: "140"}
     ],
   },
   {
     id: "noodles",
     title: "नूडल्स",
     titleEn: "Noodles",
-    emoji: "🍝",
+     emoji: "🍜",
     image: noodlesImg,
     items: [
-      { name: "वेज नूडल्स", nameEn: "Veg Noodles", price: "80/50", quantity: "फुल/हाफ", veg: true },
-      { name: "सिंगापुरी नूडल्स", nameEn: "Singapuri Noodles", price: "100/60", quantity: "फुल/हाफ", veg: true },
-      { name: "हक्का नूडल्स", nameEn: "Hakka Noodles", price: "110/70", quantity: "फुल/हाफ", veg: true },
-      { name: "चिकन नूडल्स", nameEn: "Chicken Noodles", price: "130/80", quantity: "फुल/हाफ", veg: false },
+          { name: "वेज नूडल्स", nameEn: "Veg Noodles", price: "35/65", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "पनीर नूडल्स", nameEn: "Paneer Noodles", price: "45/80", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "मशरूम नूडल्स", nameEn: "Mushroom Noodles", price: "50/80", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "वेज हक्का नूडल्स", nameEn: "Veg Hakka Noodles", price: "50/90", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "पनीर हक्का नूडल्स", nameEn: "Paneer Hakka Noodles", price: "55/100", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "वेज सिंगापुरी नूडल्स", nameEn: "Veg Singapore Noodles", price: "100"},
+    { name: "चिल्ली गार्लिक नूडल्स", nameEn: "Chilli Garlic Noodles", price: "55/100", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "भभारत रेस्टोरेंट स्पेशल नूडल्स", nameEn: "Bharat Restu. Special Noodles", price: "60/120", quantity: "हाफ/फुल", quantityEn: "Half/Full"}
     ],
   },
   {
     id: "pasta",
     title: "पास्ता",
     titleEn: "Pasta",
-    emoji: "🍝",
+      emoji: "🍝",
     image: pastaImg,
     items: [
-      { name: "रेड सॉस पास्ता", nameEn: "Red Sauce Pasta", price: "80", veg: true },
-      { name: "वाइट सॉस पास्ता", nameEn: "White Sauce Pasta", price: "100", veg: true },
-      { name: "मिक्स सॉस पास्ता", nameEn: "Mix Sauce Pasta", price: "120", veg: true },
+        { name: "रेड सॉस पास्ता", nameEn: "Red Sauce Pasta", price: "130"},
+    { name: "व्हाइट सॉस पास्ता", nameEn: "White Sauce Pasta", price: "130"}
     ],
   },
   {
     id: "south-indian",
-    title: "साउथ इंडियन",
+    title: "दक्षिण भारतीय",
     titleEn: "South Indian",
     emoji: "🍛",
     image: southIndianImg,
     items: [
-      { name: "सादा डोसा", nameEn: "Plain Dosa", price: "60", veg: true },
-      { name: "मसाला डोसा", nameEn: "Masala Dosa", price: "80", veg: true },
-      { name: "पनीर डोसा", nameEn: "Paneer Dosa", price: "100", veg: true },
-      { name: "मैसूर मसाला डोसा", nameEn: "Mysore Masala Dosa", price: "110", veg: true },
-      { name: "इडली सांबर", nameEn: "Idli Sambhar", price: "60", quantity: "2 पीस", veg: true },
-      { name: "वड़ा सांबर", nameEn: "Vada Sambhar", price: "70", quantity: "2 पीस", veg: true },
+      { name: "मसाला डोसा", nameEn: "Masala Dosa", price: "90"},
+    { name: "पनीर डोसा", nameEn: "Paneer Dosa", price: "120"},
+    { name: "स्पेशल डोसा", nameEn: "Special Dosa", price: "130"},
+    { name: "ऑनियन डोसा", nameEn: "Onion Dosa", price: "90"},
+    { name: "पेपर डोसा", nameEn: "Paper Dosa", price: "60"},
+    { name: "मसाला पनीर डोसा", nameEn: "Masala Paneer Dosa", price: "110"},
+    { name: "वेज उपमा", nameEn: "Veg Upma", price: "100"},
+    { name: "मिक्स उपमा", nameEn: "Mix Upma", price: "120"},
+    { name: "ऑनियन उपमा", nameEn: "Onion Upma", price: "120"},
+    { name: "टमाटर उपमा", nameEn: "Tomato Upma", price: "140"},
+    { name: "इडली सांभर", nameEn: "Idli Sambhar", price: "70"}
     ],
   },
   {
@@ -169,10 +179,10 @@ export const menuData: MenuCategory[] = [
     emoji: "🥘",
     image: chaatImg,
     items: [
-      { name: "आलू टिकिया चाट", nameEn: "Aloo Tikki Chaat", price: "40", veg: true },
-      { name: "पापड़ी चाat", nameEn: "Papdi Chaat", price: "40", veg: true },
-      { name: "दही भल्ला", nameEn: "Dahi Bhalla", price: "50", veg: true },
-      { name: "गोलगप्पा", nameEn: "Golgappa", price: "20", quantity: "6 पीस", veg: true },
+     { name: "पापड़ी चाट", nameEn: "Papdi Chaat", price: "40/60", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "समोसा चाट", nameEn: "Samosa Chaat", price: "30/50", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "राज कचौड़ी चाट", nameEn: "Raj Kachori Chaat", price: "60"},
+    { name: "टिक्की चाट", nameEn: "Tikki Chaat", price: "30/50", quantity: "हाफ/फुल", quantityEn: "Half/Full"}
     ],
   },
   {
@@ -182,10 +192,14 @@ export const menuData: MenuCategory[] = [
     emoji: "🥟",
     image: momoImg,
     items: [
-      { name: "वेज स्टीम मोमो", nameEn: "Veg Steam Momo", price: "50", quantity: "8 पीस", veg: true },
-      { name: "वेज फ्राइड मोमो", nameEn: "Veg Fried Momo", price: "60", quantity: "8 पीस", veg: true },
-      { name: "पनीर स्टीम मोमो", nameEn: "Paneer Steam Momo", price: "70", quantity: "8 पीस", veg: true },
-      { name: "चिकन स्टीम मोमो", nameEn: "Chicken Steam Momo", price: "80", quantity: "8 पीस", veg: false },
+    { name: "वेज स्टीम मोमो", nameEn: "Veg Steam Momos", price: "70", quantity: "8 पीस", quantityEn: "8 pcs"},
+    { name: "वेज फ्राई मोमो", nameEn: "Veg Fry Momos", price: "90", quantity: "8 पीस", quantityEn: "8 pcs"},
+    { name: "वेज चिल्ली मोमो", nameEn: "Veg Chilli Momos", price: "100", quantity: "8 पीस", quantityEn: "8 pcs"},
+    { name: "स्टीम पनीर मोमो", nameEn: "Paneer Steam Momos", price: "120", quantity: "8 पीस", quantityEn: "8 pcs"},
+    { name: "पनीर मोमो फ्राई", nameEn: "Paneer Fry Momos", price: "140", quantity: "8 पीस", quantityEn: "8 pcs"},
+    { name: "पनीर चिल्ली मोमो", nameEn: "Paneer Chilli Momos", price: "180", quantity: "8 पीस", quantityEn: "8 pcs"},
+    { name: "तंदूरी मोमो", nameEn: "Tandoori Momos", price: "140", quantity: "8 पीस", quantityEn: "8 pcs"},
+    { name: "पनीर तंदूरी मोमो", nameEn: "Paneer Tandoori Momos", price: "200", quantity: "8 पीस", quantityEn: "8 pcs"}
     ],
   },
   {
@@ -195,10 +209,14 @@ export const menuData: MenuCategory[] = [
     emoji: "🍕",
     image: pizzaImg,
     items: [
-      { name: "मार्गेरिटा पिज़्ज़ा", nameEn: "Margherita Pizza", price: "120", veg: true },
-      { name: "फार्महाउस पिज़्ज़ा", nameEn: "Farmhouse Pizza", price: "180", veg: true },
-      { name: "पनीर टिक्का पिज़्ज़ा", nameEn: "Paneer Tikka Pizza", price: "220", veg: true },
-      { name: "चिकन पिज़्ज़ा", nameEn: "Chicken Pizza", price: "250", veg: false },
+ { name: "वेज पिज्जा", nameEn: "Veg Pizza", price: "120/220", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
+    { name: "पनीर पिज्जा", nameEn: "Paneer Pizza", price: "140/240", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
+    { name: "ऑनियन मशरूम पिज्जा", nameEn: "Onion Mushroom Pizza", price: "140/230", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
+    { name: "मशरूम पिज्जा", nameEn: "Mushroom Pizza", price: "140/260", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
+    { name: "मशरूम चिल्ली पिज्जा", nameEn: "Mushroom Chilli Pizza", price: "160/280", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
+    { name: "कॉर्न पिज्जा", nameEn: "Corn Pizza", price: "150/280", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
+    { name: "इटालियन पिज्जा", nameEn: "Italian Pizza", price: "120/200", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
+    { name: "भारत रेस्टोरेंट स्पेशल पिज्जा", nameEn: "Bharat Restaurant Special Pizza", price: "150/280", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"}
     ],
   },
   {
@@ -208,36 +226,153 @@ export const menuData: MenuCategory[] = [
     emoji: "🌯",
     image: rollImg,
     items: [
-      { name: "वेज रोल", nameEn: "Veg Roll", price: "50", veg: true },
-      { name: "पनीर रोल", nameEn: "Paneer Roll", price: "70", veg: true },
-      { name: "एग रोल", nameEn: "Egg Roll", price: "60", veg: false },
-      { name: "चिकन रोल", nameEn: "Chicken Roll", price: "90", veg: false },
+      { name: "वेज रोल", nameEn: "Veg Roll", price: "50"},
+    { name: "पनीर रोल", nameEn: "Paneer Roll", price: "80"},
+    { name: "वेज चीज रोल", nameEn: "Veg Cheese Roll", price: "80"},
+    { name: "पनीर चीज रोल", nameEn: "Paneer Cheese Roll", price: "100"}
     ],
   },
+{
+    id: "chinese", 
+    title: "चाइनीज",
+    titleEn: "Chinese",
+    emoji: "🍜",
+    image: chineseImg,
+  items: [
+    { name: "वेज मंचूरियन (ड्राई/ग्रेवी)", nameEn: "Veg Manchurian (Dry/Gravy)", price: "80/150"},
+    { name: "पनीर चिल्ली (ड्राई/ग्रेवी)", nameEn: "Paneer Chilli (Dry/Gravy)", price: "100/180"},
+    { name: "पनीर मंचूरियन (ड्राई/ग्रेवी)", nameEn: "Paneer Manchurian (Dry/Gravy)", price: "200"},
+    { name: "मशरूम चिल्ली (ड्राई/ग्रेवी)", nameEn: "Mushroom Chilli (Dry/Gravy)", price: "200"},
+    { name: "पोटैटो चिल्ली (ड्राई)", nameEn: "Potato Chilli (Dry)", price: "150"},
+    { name: "बेबी कॉर्न चिल्ली (ड्राई/ग्रेवी)", nameEn: "Baby Corn Chilli (Dry/Gravy)", price: "250"},
+    { name: "सोया चाप चिल्ली (ड्राई/ग्रेवी)", nameEn: "Soya Chaap Chilli (Dry/Gravy)", price: "180"},
+    { name: "पनीर 65", nameEn: "Paneer 65", price: "210"},
+    { name: "पनीर पेपर", nameEn: "Paneer Pepper", price: "220"},
+    { name: "क्रिस्पी बेबी कॉर्न चिल्ली", nameEn: "Crispy Baby Corn Chilli", price: "250"},
+    { name: "क्लासिक चाप", nameEn: "Classic Chaap", price: "250"},
+    { name: "मशरूम चिल्ली", nameEn: "Mushroom Chilli", price: "180"}
+  ]
+},
   {
-    id: "pesty",
-    title: "पेस्ट्री",
-    titleEn: "Pastry",
-    emoji: "🍰",
-    image: pestyImg,
+    id: "thali",
+    title: "थाली",
+    titleEn: "Thali",
+    emoji: "🍱",
+    image: thaliImg,
     items: [
-      { name: "चॉकलेट पेस्ट्री", nameEn: "Chocolate Pastry", price: "40", veg: true },
-      { name: "ब्लैक फॉरेस्ट", nameEn: "Black Forest", price: "45", veg: true },
-      { name: "पाइनएप्पल पेस्ट्री", nameEn: "Pineapple Pastry", price: "35", veg: true },
+      { name: "वेज थाली", nameEn: "Veg Thali", price: "120"},
+    { name: "वेज डिलक्स थाली", nameEn: "Veg Deluxe Thali", price: "150"}
     ],
   },
-  {
+   {
+    id: "bhartiya",
+    title: "भारतीय व्यंजन",
+    titleEn: "Indian Main Course",
+    emoji: "🍛",
+    image: bhartiyaImg,
+    items: [
+    { name: "मटर पनीर", nameEn: "Matar Paneer", price: "100/170", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "पनीर बटर मसाला", nameEn: "Paneer Butter Masala", price: "210"},
+    { name: "पनीर कढ़ाही", nameEn: "Paneer Kadhai", price: "130/200", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "पनीर हांडी", nameEn: "Paneer Handi", price: "130/200", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "पनीर दो प्याजा", nameEn: "Paneer Do Pyaza", price: "220"},
+    { name: "शाही पनीर", nameEn: "Shahi Paneer", price: "220"},
+    { name: "पनीर मसाला", nameEn: "Paneer Masala", price: "200"},
+    { name: "पनीर हैदराबादी", nameEn: "Paneer Hyderabadi", price: "230"},
+    { name: "पनीर लबाबदार", nameEn: "Paneer Lababdar", price: "230"},
+    { name: "पंजाबी पनीर", nameEn: "Punjabi Paneer", price: "270"},
+    { name: "पालक पनीर", nameEn: "Palak Paneer", price: "140/220", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "पनीर पसंदा", nameEn: "Paneer Pasanda", price: "240"},
+    { name: "पनीर भुर्जी", nameEn: "Paneer Bhurji", price: "230"},
+    { name: "पनीर टिक्का मसाला", nameEn: "Paneer Tikka Masala", price: "240"}
+    ],
+  },
+    {
+    id: "mushroom",
+    title: "मशरूम",
+    titleEn: "Mushroom",
+    emoji: "🍄",
+    image: mushroomImg,
+    items: [
+     { name: "मशरूम बटर मसाला", nameEn: "Mushroom Butter Masala", price: "260"},
+    { name: "कढ़ाही मशरूम", nameEn: "Kadhai Mushroom", price: "230"},
+    { name: "मशरूम दो प्याजा", nameEn: "Mushroom Do Pyaza", price: "240"},
+    { name: "मटर मशरूम", nameEn: "Matar Mushroom", price: "230"}
+    ],
+  },
+    {
+    id: "hara-sabji",
+    title: "हरी सब्जी",
+    titleEn: "Hari Sabzi",
+    emoji: "🥦",
+    image: haraSabjiImg,
+    items: [
+     { name: "कढ़ाही वेज", nameEn: "Kadhai Veg", price: "180"},
+    { name: "मिक्स वेज", nameEn: "Mix Veg", price: "160"},
+    { name: "वेज कोरमा", nameEn: "Veg Korma", price: "240"},
+    { name: "दम आलू", nameEn: "Dum Aloo", price: "140"},
+    { name: "आलू जीरा", nameEn: "Aloo Jeera", price: "110"},
+    { name: "आलू पालक", nameEn: "Aloo Palak", price: "140"},
+    { name: "दम आलू कश्मीरी", nameEn: "Dum Aloo Kashmiri", price: "180"},
+    { name: "स्टफ्ड दम आलू", nameEn: "Stuffed Dum Aloo", price: "230"},
+    { name: "टमाटर दम मसाला", nameEn: "Tamatar Dum Masala", price: "200"},
+    { name: "राजमा", nameEn: "Rajma", price: "180"},
+    { name: "चना मसाला", nameEn: "Chana Masala", price: "130"},
+    { name: "पालक कॉर्न", nameEn: "Palak Corn", price: "190"},
+    { name: "वेज कोफ्ता", nameEn: "Veg Kofta", price: "170"},
+    { name: "मलाई कोफ्ता", nameEn: "Malai Kofta", price: "210"},
+    { name: "पालक कोफ्ता", nameEn: "Palak Kofta", price: "200"},
+    ],
+  },
+   {
+    id: "tandoor-paneer",
+    title: "तंदूरी पनीर",
+    titleEn: "Tandoori Paneer",
+    emoji: "🍢",
+    image: tandoorPaneerImg,
+    items: [
+    { name: "पनीर टिक्का", nameEn: "Paneer Tikka", price: "210"},
+    { name: "मलाई टिक्का", nameEn: "Malai Tikka", price: "200"},
+    { name: "पनीर हरियालीी टिक्का", nameEn: "Paneer Hariyali Tikka", price: "250"},
+    { name: "पनीर गोलीी कबाब", nameEn: "Paneer Goli Kabab", price: "230"},
+    { name: "भेज सिक कबाब", nameEn: "Veg Sikk Kabab", price: "190"},
+    { name: "मशरूम टिक्का", nameEn: "Mushroom Tikka", price: "230"},
+    { name: "पनीर सिक कबाबी", nameEn: "Veg Sikk Kabab", price: "250"},
+    { name: "पनीर पैरी टिक्का", nameEn: "Paneer Perry Tikka", price: "260"},
+    { name: "पनीर बॉल", nameEn: "Paneer ball", price: "260"}
+    ],
+  },
+    {
+    id: "dal",
+    title: "दाल",
+    titleEn: "Dal",
+    emoji: "🥣",
+    image: dalImg,
+    items: [
+  { name: "दाल फ्राई", nameEn: "Dal Fry", price: "80"},
+    { name: "दाल तड़का", nameEn: "Dal Tadka", price: "90"},
+    { name: "दाल मखनी", nameEn: "Dal Makhani", price: "160"},
+    { name: "दाल हांडी", nameEn: "Dal Handi", price: "120"}
+    ],
+  },
+    {
     id: "tandoor-roti",
     title: "तंदूरी रोटी",
     titleEn: "Tandoori Roti",
     emoji: "🫓",
     image: tandoorRotiImg,
     items: [
-      { name: "तंदूरी रोटी", nameEn: "Tandoori Roti", price: "10", veg: true },
-      { name: "बटर तंदूरी रोटी", nameEn: "Butter Tandoori Roti", price: "12", veg: true },
-      { name: "तंदूरी लच्छा पराठा", nameEn: "Tandoori Lachha Paratha", price: "30", veg: true },
-      { name: "बटर नान", nameEn: "Butter Naan", price: "40", veg: true },
-      { name: "पनीर नान", nameEn: "Paneer Naan", price: "60", veg: true },
+       { name: "प्लेन रोटी", nameEn: "Plain Roti", price: "10"},
+    { name: "बटर रोटी", nameEn: "Butter Roti", price: "15"},
+    { name: "लच्छा पराठा", nameEn: "Lachha Paratha", price: "25"},
+    { name: "प्लेन नान", nameEn: "Plain Naan", price: "30"},
+    { name: "बटर नान", nameEn: "Butter Naan", price: "35"},
+    { name: "स्टफ नान", nameEn: "Stuffed Naan", price: "35"},
+    { name: "स्टफ पनीर नान", nameEn: "Stuffed Paneer Naan", price: "60"},
+    { name: "अमृतसरी नान", nameEn: "Amritsari Naan", price: "50"},
+    { name: "काजू नान", nameEn: "Kaju Naan", price: "70"},
+    { name: "काश्मीरी नान", nameEn: "Kashmiri Naan", price: "90"},
+    { name: "मिस्सी रोटी", nameEn: "Missi Roti", price: "40"},
     ],
   },
   {
@@ -247,11 +382,15 @@ export const menuData: MenuCategory[] = [
     emoji: "🫓",
     image: parathaImg,
     items: [
-      { name: "तवा रोटी", nameEn: "Tawa Roti", price: "8", veg: true },
-      { name: "बटर तवा रोटी", nameEn: "Butter Tawa Roti", price: "10", veg: true },
-      { name: "सादा पराठा", nameEn: "Plain Paratha", price: "15", veg: true },
+          { name: "हरी मिर्च पराठा", nameEn: "Green Chilli Paratha", price: "35"},
+      { name: "लाल मिर्च पराठा", nameEn: "Red Chilli Paratha", price: "30" },
+      { name: "अजवाइन पराठा", nameEn: "Ajwain Paratha", price: "35" },
+    { name: "आलू पराठा", nameEn: "Aloo Paratha", price: "30"},
+    { name: "पनीर पराठा", nameEn: "Paneer Paratha", price: "40"}
     ],
   },
+
+ 
   {
     id: "chawal",
     title: "चावल",
@@ -259,9 +398,15 @@ export const menuData: MenuCategory[] = [
     emoji: "🍚",
     image: chawalImg,
     items: [
-      { name: "सादा चावल", nameEn: "Plain Rice", price: "60/40", quantity: "फुल/हाफ", veg: true },
-      { name: "जीरा राइस", nameEn: "Jeera Rice", price: "80/50", quantity: "फुल/हाफ", veg: true },
-      { name: "वेज पुलाव", nameEn: "Veg Pulao", price: "100/60", quantity: "फुल/हाफ", veg: true },
+{ name: "स्टीम राइस", nameEn: "Steam Rice", price: "70"},
+    { name: "जीरा राइस", nameEn: "Jeera Rice", price: "90"},
+    { name: "फ्राई राइस", nameEn: "Fried Rice", price: "110"},
+    { name: "पोटैटो राइस", nameEn: "Potato Rice", price: "100"},
+    { name: "मंचूरियन राइस", nameEn: "Manchurian Rice", price: "110"},
+    { name: "पनीर फ्राई राइस", nameEn: "Paneer Fried Rice", price: "130"},
+    { name: "वेज पुलाव", nameEn: "Veg Pulao", price: "110"},
+    { name: "कश्मीरी पुलाव", nameEn: "Kashmiri Pulao", price: "120"},
+    { name: "मटर पुलाव", nameEn: "Matar Pulao", price: "110"}
     ],
   },
   {
@@ -271,83 +416,21 @@ export const menuData: MenuCategory[] = [
     emoji: "🍲",
     image: biryaniImg,
     items: [
-      { name: "वेज बिरयानी", nameEn: "Veg Biryani", price: "120/70", quantity: "फुल/हाफ", veg: true },
-      { name: "चिकन बिरयानी", nameEn: "Chicken Biryani", price: "180/100", quantity: "फुल/हाफ", veg: false },
-      { name: "अंडा बिरयानी", nameEn: "Egg Biryani", price: "140/80", quantity: "फुल/हाफ", veg: false },
+    { name: "टोमेटो बिरयानी", nameEn: "Tomato Biryani", price: "130"},
+    { name: "वेज बिरयानी", nameEn: "Veg Biryani", price: "140"},
+    { name: "दम बिरयानी", nameEn: "Dum Biryani", price: "160"},
+    { name: "पनीर बिरयानी", nameEn: "Paneer Biryani", price: "170"},
+    { name: "मशरूम बिरयानी", nameEn: "Mushroom Biryani", price: "180"},
+    { name: "वेज हांडी बिरयानी", nameEn: "Veg Handi Biryani", price: "160"},
+    { name: "पनीर हांडी बिरयानी", nameEn: "Paneer Handi Biryani", price: "190"},
+    { name: "भारत रेस्टोरेंट स्पेशल बिरयानी", nameEn: "Bharat Restu. Special Biryani", price: "210"}
     ],
   },
-  {
-    id: "dal",
-    title: "दाल",
-    titleEn: "Dal",
-    emoji: "🥣",
-    image: dalImg,
-    items: [
-      { name: "दाल फ्राई", nameEn: "Dal Fry", price: "80/50", quantity: "फुल/हाफ", veg: true },
-      { name: "दाल तड़का", nameEn: "Dal Tadka", price: "100/60", quantity: "फुल/हाफ", veg: true },
-      { name: "दाल मखनी", nameEn: "Dal Makhani", price: "140/80", quantity: "फुल/हाफ", veg: true },
-    ],
-  },
-  {
-    id: "bhartiya",
-    title: "भारतीय व्यंजन",
-    titleEn: "Indian Main Course",
-    emoji: "🍛",
-    image: bhartiyaImg,
-    items: [
-      { name: "मिक्स वेज", nameEn: "Mix Veg", price: "120/70", quantity: "फुल/हाफ", veg: true },
-      { name: "आलू गोभी", nameEn: "Aloo Gobhi", price: "100/60", quantity: "फुल/हाफ", veg: true },
-      { name: "कड़ाही पनीर", nameEn: "Kadai Paneer", price: "220/120", quantity: "फुल/हाफ", veg: true },
-      { name: "मटर पनीर", nameEn: "Matar Paneer", price: "200/110", quantity: "फुल/हाफ", veg: true },
-      { name: "शाही पनीर", nameEn: "Shahi Paneer", price: "240/130", quantity: "फुल/हाफ", veg: true },
-    ],
-  },
-  {
-    id: "mushroom",
-    title: "मशरूम",
-    titleEn: "Mushroom",
-    emoji: "🍄",
-    image: mushroomImg,
-    items: [
-      { name: "मशरूम मसाला", nameEn: "Mushroom Masala", price: "200/110", quantity: "फुल/हाफ", veg: true },
-      { name: "मटर मशरूम", nameEn: "Matar Mushroom", price: "220/120", quantity: "फुल/हाफ", veg: true },
-      { name: "कड़ाही मशरूम", nameEn: "Kadai Mushroom", price: "240/130", quantity: "फुल/हाफ", veg: true },
-    ],
-  },
-  {
-    id: "hara-sabji",
-    title: "हरी सब्जी",
-    titleEn: "Green Vegetables",
-    emoji: "🥦",
-    image: haraSabjiImg,
-    items: [
-      { name: "पालक पनीर", nameEn: "Palak Paneer", price: "180/100", quantity: "फुल/हाफ", veg: true },
-      { name: "भिंडी मसाला", nameEn: "Bhindi Masala", price: "100/60", quantity: "फुल/हाफ", veg: true },
-    ],
-  },
-  {
-    id: "tandoor-paneer",
-    title: "तंदूरी पनीर",
-    titleEn: "Tandoori Paneer",
-    emoji: "🍢",
-    image: tandoorPaneerImg,
-    items: [
-      { name: "पनीर टिक्का", nameEn: "Paneer Tikka", price: "180", quantity: "8 पीस", veg: true },
-      { name: "मलाई पनीर टिक्का", nameEn: "Malai Paneer Tikka", price: "200", quantity: "8 पीस", veg: true },
-    ],
-  },
-  {
-    id: "chinese",
-    title: "चाइनीज",
-    titleEn: "Chinese",
-    emoji: "🍜",
-    image: chineseImg,
-    items: [
-      { name: "वेज मंचूरियन", nameEn: "Veg Manchurian", price: "120/70", quantity: "फुल/हाफ", veg: true },
-      { name: "पनीर चिली", nameEn: "Paneer Chilli", price: "180/100", quantity: "फुल/हाफ", veg: true },
-      { name: "चिकन चिली", nameEn: "Chicken Chilli", price: "220/120", quantity: "फुल/हाफ", veg: false },
-    ],
-  },
+
+ 
+
+
+ 
   {
     id: "salad-raita",
     title: "सलाद और रायता",
@@ -355,9 +438,10 @@ export const menuData: MenuCategory[] = [
     emoji: "🥗",
     image: saladRaitaImg,
     items: [
-      { name: "ग्रीन सलाद", nameEn: "Green Salad", price: "40", veg: true },
-      { name: "बूंदी रायता", nameEn: "Boondi Raita", price: "50", veg: true },
-      { name: "मिक्स वेज रायता", nameEn: "Mix Veg Raita", price: "60", veg: true },
+    { name: "ग्रीन सलाद", nameEn: "Green Salad", price: "30/50", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "बूंदी रायता", nameEn: "Boondi Raita", price: "40"},
+    { name: "मिक्स वेज रायता", nameEn: "Mix Veg Raita", price: "40"},
+    { name: "पाइनएप्पल रायता", nameEn: "Pineapple Raita", price: "45"}
     ],
   },
   {
@@ -367,21 +451,30 @@ export const menuData: MenuCategory[] = [
     emoji: "🥣",
     image: soupImg,
     items: [
-      { name: "टमाटर सूप", nameEn: "Tomato Soup", price: "50", veg: true },
-      { name: "वेज हॉट एंड सोर", nameEn: "Veg Hot & Sour", price: "60", veg: true },
-      { name: "चिकन सूप", nameEn: "Chicken Soup", price: "80", veg: false },
+    { name: "वेज सूप", nameEn: "Veg Soup", price: "70"},
+    { name: "वेज मंचो सूप", nameEn: "Veg Manchow Soup", price: "90"},
+    { name: "वेज मशरूम सूप", nameEn: "Veg Mushroom Soup", price: "110"},
+    { name: "क्लीयर सूप", nameEn: "Clear Soup", price: "80"},
+    { name: "टमाटर सूप", nameEn: "Tomato Soup", price: "90"},
+    { name: "स्वीट कॉर्न सूप", nameEn: "Sweet Corn Soup", price: "100"},
+    { name: "हॉट एंड सावर सूप", nameEn: "Hot & Sour Soup", price: "110"},
+    { name: "भारत रेस्टोरेंट स्पेशल सूप", nameEn: "Bharat Restu. Special Soup", price: "120"},
     ],
   },
-  {
-    id: "thali",
-    title: "थाली",
-    titleEn: "Thali",
-    emoji: "🍱",
-    image: thaliImg,
+    {
+    id: "pesty",
+    title: "पेस्ट्री",
+    titleEn: "Pastry",
+    emoji: "🍰",
+    image: pestyImg,
     items: [
-      { name: "साधारण थाली", nameEn: "Normal Thali", price: "100", veg: true },
-      { name: "स्पेशल थाली", nameEn: "Special Thali", price: "150", veg: true },
-      { name: "महाराजा थाली", nameEn: "Maharaja Thali", price: "250", veg: true },
+    { name: "पाइनएप्पल पेस्ट्री", nameEn: "Pineapple Pastry", price: "40"},
+    { name: "वनीला पेस्ट्री", nameEn: "Vanilla Pastry", price: "40"},
+    { name: "बटर स्कॉच पेस्ट्री", nameEn: "Butterscotch Pastry", price: "40"},
+    { name: "ब्लैक फॉरेस्ट पेस्ट्री", nameEn: "Black Forest Pastry", price: "45"},
+    { name: "बटर स्कॉच पेस्ट्री कप", nameEn: "Butterscotch Pastry Cup", price: "50"},
+    { name: "चॉकलेट पेस्ट्री", nameEn: "Chocolate Pastry", price: "45"},
+    { name: "चॉकलेट पेस्ट्री कप", nameEn: "Chocolate Pastry Cup", price: "50"}
     ],
   },
   {
@@ -391,9 +484,17 @@ export const menuData: MenuCategory[] = [
     emoji: "🥤",
     image: shakeImg,
     items: [
-      { name: "बनाना शेक", nameEn: "Banana Shake", price: "50", veg: true },
-      { name: "मैंगो शेक", nameEn: "Mango Shake", price: "60", veg: true },
-      { name: "ओरियो शेक", nameEn: "Oreo Shake", price: "80", veg: true },
+         { name: "मिल्क शेक", nameEn: "Milk Shake", price: "75/100", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
+    { name: "चॉकलेट शेक", nameEn: "Chocolate Shake", price: "75/95", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
+    { name: "बटर स्कॉच", nameEn: "Butterscotch Shake", price: "85/115", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
+    { name: "मैंगो शेक", nameEn: "Mango Shake", price: "85/115", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
+    { name: "स्ट्रॉबेरी शेक", nameEn: "Strawberry Shake", price: "90/125", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
+    { name: "काजू शेक", nameEn: "Kaju Shake", price: "95/120", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
+    { name: "बदाम शेक", nameEn: "Badam Shake", price: "95/125", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
+    { name: "ओरियो शेक", nameEn: "Oreo Shake", price: "115/135", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
+    { name: "किट-कैट शेक", nameEn: "KitKat Shake", price: "95/115", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
+    { name: "कोल्ड कॉफी", nameEn: "Cold Coffee", price: "85/105", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
+    { name: "वेनिला शेक", nameEn: "Vanilla Shake", price: "75/95", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"}
     ],
   },
   {
@@ -403,9 +504,12 @@ export const menuData: MenuCategory[] = [
     emoji: "🍦",
     image: icecreamImg,
     items: [
-      { name: "वैनिला", nameEn: "Vanilla", price: "30", veg: true },
-      { name: "चॉकलेट", nameEn: "Chocolate", price: "40", veg: true },
-      { name: "बटर स्कॉच", nameEn: "Butter Scotch", price: "50", veg: true },
+    { name: "वनीला", nameEn: "Vanilla", price: "30/40", quantity: "कप/कोन", quantityEn: "Cup/Cone"},
+    { name: "बटर स्कॉच", nameEn: "Butterscotch", price: "40/50", quantity: "कप/कोन", quantityEn: "Cup/Cone"},
+    { name: "चॉकलेट", nameEn: "Chocolate", price: "45/55", quantity: "कप/कोन", quantityEn: "Cup/Cone"},
+    { name: "स्ट्रॉबेरी", nameEn: "Strawberry", price: "40/45", quantity: "कप/कोन", quantityEn: "Cup/Cone"},
+    { name: "मैंगो", nameEn: "Mango", price: "55/60", quantity: "कप/कोन", quantityEn: "Cup/Cone"},
+    { name: "पाइनएप्पल", nameEn: "Pineapple", price: "45/55", quantity: "कप/कोन", quantityEn: "Cup/Cone"}
     ],
   },
   {
@@ -415,8 +519,12 @@ export const menuData: MenuCategory[] = [
     emoji: "🍬",
     image: sweetsImg,
     items: [
-      { name: "गुलाब जामुन", nameEn: "Gulab Jamun", price: "20", quantity: "1 पीस", veg: true },
-      { name: "रसगुल्ला", nameEn: "Rasgulla", price: "15", quantity: "1 पीस", veg: true },
+        { name: "रसगुल्ला", nameEn: "Rasgulla", price: "20"},
+    { name: "राज भोग", nameEn: "Raj Bhog", price: "30"},
+    { name: "गुलाब जामुन", nameEn: "Gulab Jamun", price: "20"},
+    { name: "केम चोप", nameEn: "Khem Chop", price: "20"},
+    { name: "छेना रोल", nameEn: "Chhena Roll", price: "40"},
+    { name: "रस मलाई", nameEn: "Ras Malai", price: "50"}
     ],
   },
 ];
