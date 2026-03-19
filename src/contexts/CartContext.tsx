@@ -29,7 +29,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   const addToCart = (item: Omit<CartItem, 'id' | 'qty'>) => {
- const id = `${item.categoryId}-${item.nameEn}`;
+const id = `${item.categoryId}-${item.name}`;
     setCart((prev) => {
       const existing = prev.find((c) => c.id === id);
       if (existing) {
