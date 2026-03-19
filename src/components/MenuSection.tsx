@@ -68,23 +68,23 @@ const quantity =
            <div className="flex items-center gap-3 flex-1 min-w-0">
   {/* Veg indicator */}
   <div
-    className={`w-4 h-4 shrink-0 rounded-sm border-2 flex items-center justify-center ${
-      item.veg ? "border-green-500" : "border-red-500"
-    }`}
+   className="w-4 h-4 shrink-0 rounded-sm border-2 border-green-500 flex items-center justify-center"
   >
     <div
-      className={`w-2 h-2 rounded-full ${
-        item.veg ? "bg-green-500" : "bg-red-500"
-      }`}
+     className="w-2 h-2 rounded-full bg-green-500"
     />
   </div>
 
   {/* Item name */}
   <div className="min-w-0">
     <p className="text-sm font-semibold truncate">{itemName}</p>
-    {item.quantity && (
-      <p className="text-xs text-muted-foreground">{item.quantity}</p>
-    )}
+  {(item.quantity || item.quantityEn) && (
+  <p className="text-xs text-muted-foreground">
+    {language === "en"
+      ? item.quantityEn || item.quantity
+      : item.quantity}
+  </p>
+)}
   </div>
 </div>
 
