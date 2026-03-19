@@ -34,6 +34,10 @@ export interface MenuItem {
   price: string;
   quantity?: string;
   quantityEn?: string;
+  options?: {
+    label: string;
+    labelEn: string;
+  }[];
   
   
 }
@@ -131,14 +135,14 @@ export const menuData: MenuCategory[] = [
      emoji: "🍜",
     image: noodlesImg,
     items: [
-          { name: "वेज नूडल्स", nameEn: "Veg Noodles", price: "35/65", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
-    { name: "पनीर नूडल्स", nameEn: "Paneer Noodles", price: "45/80", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
-    { name: "मशरूम नूडल्स", nameEn: "Mushroom Noodles", price: "50/80", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
-    { name: "वेज हक्का नूडल्स", nameEn: "Veg Hakka Noodles", price: "50/90", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
-    { name: "पनीर हक्का नूडल्स", nameEn: "Paneer Hakka Noodles", price: "55/100", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+          { name: "वेज नूडल्स", nameEn: "Veg Noodles", price: "35/65", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
+    { name: "पनीर नूडल्स", nameEn: "Paneer Noodles", price: "45/80", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
+    { name: "मशरूम नूडल्स", nameEn: "Mushroom Noodles", price: "50/80", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
+    { name: "वेज हक्का नूडल्स", nameEn: "Veg Hakka Noodles", price: "50/90", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
+    { name: "पनीर हक्का नूडल्स", nameEn: "Paneer Hakka Noodles", price: "55/100", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
     { name: "वेज सिंगापुरी नूडल्स", nameEn: "Veg Singapore Noodles", price: "100"},
-    { name: "चिल्ली गार्लिक नूडल्स", nameEn: "Chilli Garlic Noodles", price: "55/100", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
-    { name: "भभारत रेस्टोरेंट स्पेशल नूडल्स", nameEn: "Bharat Restu. Special Noodles", price: "60/120", quantity: "हाफ/फुल", quantityEn: "Half/Full"}
+    { name: "चिल्ली गार्लिक नूडल्स", nameEn: "Chilli Garlic Noodles", price: "55/100", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
+    { name: "भभारत रेस्टोरेंट स्पेशल नूडल्स", nameEn: "Bharat Restu. Special Noodles", price: "60/120", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]}
     ],
   },
   {
@@ -179,10 +183,10 @@ export const menuData: MenuCategory[] = [
     emoji: "🥘",
     image: chaatImg,
     items: [
-     { name: "पापड़ी चाट", nameEn: "Papdi Chaat", price: "40/60", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
-    { name: "समोसा चाट", nameEn: "Samosa Chaat", price: "30/50", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+     { name: "पापड़ी चाट", nameEn: "Papdi Chaat", price: "40/60", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
+    { name: "समोसा चाट", nameEn: "Samosa Chaat", price: "30/50", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
     { name: "राज कचौड़ी चाट", nameEn: "Raj Kachori Chaat", price: "60"},
-    { name: "टिक्की चाट", nameEn: "Tikki Chaat", price: "30/50", quantity: "हाफ/फुल", quantityEn: "Half/Full"}
+    { name: "टिक्की चाट", nameEn: "Tikki Chaat", price: "30/50", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]}
     ],
   },
   {
@@ -209,16 +213,16 @@ export const menuData: MenuCategory[] = [
     emoji: "🍕",
     image: pizzaImg,
     items: [
- { name: "वेज पिज्जा", nameEn: "Veg Pizza", price: "120/220", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
-    { name: "पनीर पिज्जा", nameEn: "Paneer Pizza", price: "140/240", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
-    { name: "ऑनियन मशरूम पिज्जा", nameEn: "Onion Mushroom Pizza", price: "140/230", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
-    { name: "मशरूम पिज्जा", nameEn: "Mushroom Pizza", price: "140/260", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
-    { name: "मशरूम चिल्ली पिज्जा", nameEn: "Mushroom Chilli Pizza", price: "160/280", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
-    { name: "कॉर्न पिज्जा", nameEn: "Corn Pizza", price: "150/280", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
-    { name: "इटालियन पिज्जा", nameEn: "Italian Pizza", price: "120/200", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"},
-    { name: "भारत रेस्टोरेंट स्पेशल पिज्जा", nameEn: "Bharat Restaurant Special Pizza", price: "150/280", quantity: "छोटा/बड़ा", quantityEn: "Small/Large"}
+ { name: "वेज पिज्जा", nameEn: "Veg Pizza", price: "120/220", quantity: "छोटा/बड़ा", quantityEn: "Small/Large", options: [{ label: "छोटा", labelEn: "Small" }, { label: "बड़ा", labelEn: "Large" }]},
+    { name: "पनीर पिज्जा", nameEn: "Paneer Pizza", price: "140/240", quantity: "छोटा/बड़ा", quantityEn: "Small/Large", options: [{ label: "छोटा", labelEn: "Small" }, { label: "बड़ा", labelEn: "Large" }]},
+    { name: "ऑनियन मशरूम पिज्जा", nameEn: "Onion Mushroom Pizza", price: "140/230", quantity: "छोटा/बड़ा", quantityEn: "Small/Large", options: [{ label: "छोटा", labelEn: "Small" }, { label: "बड़ा", labelEn: "Large" }]},
+    { name: "मशरूम पिज्जा", nameEn: "Mushroom Pizza", price: "140/260", quantity: "छोटा/बड़ा", quantityEn: "Small/Large", options: [{ label: "छोटा", labelEn: "Small" }, { label: "बड़ा", labelEn: "Large" }]},
+    { name: "मशरूम चिल्ली पिज्जा", nameEn: "Mushroom Chilli Pizza", price: "160/280", quantity: "छोटा/बड़ा", quantityEn: "Small/Large", options: [{ label: "छोटा", labelEn: "Small" }, { label: "बड़ा", labelEn: "Large" }]},
+    { name: "कॉर्न पिज्जा", nameEn: "Corn Pizza", price: "150/280", quantity: "छोटा/बड़ा", quantityEn: "Small/Large", options: [{ label: "छोटा", labelEn: "Small" }, { label: "बड़ा", labelEn: "Large" }]},
+    { name: "इटालियन पिज्जा", nameEn: "Italian Pizza", price: "120/200", quantity: "छोटा/बड़ा", quantityEn: "Small/Large", options: [{ label: "छोटा", labelEn: "Small" }, { label: "बड़ा", labelEn: "Large" }]},
+    { name: "भारत रेस्टोरेंट स्पेशल पिज्जा", nameEn: "Bharat Restaurant Special Pizza", price: "150/280", quantity: "छोटा/बड़ा ", quantityEn: "Small/Large", options: [{ label: "छोटा", labelEn: "Small" }, { label: "बड़ा", labelEn: "Large" }]}
     ],
-  },
+  }, 
   {
     id: "roll",
     title: "रोल",
@@ -239,13 +243,13 @@ export const menuData: MenuCategory[] = [
     emoji: "🍜",
     image: chineseImg,
   items: [
-    { name: "वेज मंचूरियन (ड्राई/ग्रेवी)", nameEn: "Veg Manchurian (Dry/Gravy)", price: "80/150"},
-    { name: "पनीर चिल्ली (ड्राई/ग्रेवी)", nameEn: "Paneer Chilli (Dry/Gravy)", price: "100/180"},
-    { name: "पनीर मंचूरियन (ड्राई/ग्रेवी)", nameEn: "Paneer Manchurian (Dry/Gravy)", price: "200"},
-    { name: "मशरूम चिल्ली (ड्राई/ग्रेवी)", nameEn: "Mushroom Chilli (Dry/Gravy)", price: "200"},
+    { name: "वेज मंचूरियन (ड्राई+ग्रेवी)", nameEn: "Veg Manchurian (Dry+Gravy)", price: "80/150", options: ["Half", "Full"], options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
+    { name: "पनीर चिल्ली (ड्राई+ग्रेवी)", nameEn: "Paneer Chilli (Dry+Gravy)", price: "100/180", options: ["Half", "Full"], options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
+    { name: "पनीर मंचूरियन (ड्राई+ग्रेवी)", nameEn: "Paneer Manchurian (Dry/Gravy)", price: "200"},
+    { name: "मशरूम चिल्ली (ड्राई+ग्रेवी)", nameEn: "Mushroom Chilli (Dry/Gravy)", price: "200"},
     { name: "पोटैटो चिल्ली (ड्राई)", nameEn: "Potato Chilli (Dry)", price: "150"},
-    { name: "बेबी कॉर्न चिल्ली (ड्राई/ग्रेवी)", nameEn: "Baby Corn Chilli (Dry/Gravy)", price: "250"},
-    { name: "सोया चाप चिल्ली (ड्राई/ग्रेवी)", nameEn: "Soya Chaap Chilli (Dry/Gravy)", price: "180"},
+    { name: "बेबी कॉर्न चिल्ली (ड्राई+ग्रेवी)", nameEn: "Baby Corn Chilli (Dry+Gravy)", price: "250"},
+    { name: "सोया चाप चिल्ली (ड्राई+ग्रेवी)", nameEn: "Soya Chaap Chilli (Dry+Gravy)", price: "180"},
     { name: "पनीर 65", nameEn: "Paneer 65", price: "210"},
     { name: "पनीर पेपर", nameEn: "Paneer Pepper", price: "220"},
     { name: "क्रिस्पी बेबी कॉर्न चिल्ली", nameEn: "Crispy Baby Corn Chilli", price: "250"},
@@ -271,17 +275,17 @@ export const menuData: MenuCategory[] = [
     emoji: "🍛",
     image: bhartiyaImg,
     items: [
-    { name: "मटर पनीर", nameEn: "Matar Paneer", price: "100/170", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "मटर पनीर", nameEn: "Matar Paneer", price: "100/170", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
     { name: "पनीर बटर मसाला", nameEn: "Paneer Butter Masala", price: "210"},
-    { name: "पनीर कढ़ाही", nameEn: "Paneer Kadhai", price: "130/200", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
-    { name: "पनीर हांडी", nameEn: "Paneer Handi", price: "130/200", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "पनीर कढ़ाही", nameEn: "Paneer Kadhai", price: "130/200", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
+    { name: "पनीर हांडी", nameEn: "Paneer Handi", price: "130/200", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
     { name: "पनीर दो प्याजा", nameEn: "Paneer Do Pyaza", price: "220"},
     { name: "शाही पनीर", nameEn: "Shahi Paneer", price: "220"},
     { name: "पनीर मसाला", nameEn: "Paneer Masala", price: "200"},
     { name: "पनीर हैदराबादी", nameEn: "Paneer Hyderabadi", price: "230"},
     { name: "पनीर लबाबदार", nameEn: "Paneer Lababdar", price: "230"},
     { name: "पंजाबी पनीर", nameEn: "Punjabi Paneer", price: "270"},
-    { name: "पालक पनीर", nameEn: "Palak Paneer", price: "140/220", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "पालक पनीर", nameEn: "Palak Paneer", price: "140/220", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
     { name: "पनीर पसंदा", nameEn: "Paneer Pasanda", price: "240"},
     { name: "पनीर भुर्जी", nameEn: "Paneer Bhurji", price: "230"},
     { name: "पनीर टिक्का मसाला", nameEn: "Paneer Tikka Masala", price: "240"}
@@ -438,7 +442,7 @@ export const menuData: MenuCategory[] = [
     emoji: "🥗",
     image: saladRaitaImg,
     items: [
-    { name: "ग्रीन सलाद", nameEn: "Green Salad", price: "30/50", quantity: "हाफ/फुल", quantityEn: "Half/Full"},
+    { name: "ग्रीन सलाद", nameEn: "Green Salad", price: "30/50", quantity: "हाफ/फुल", quantityEn: "Half/Full", options: [{ label: "हाफ", labelEn: "Half" }, { label: "फुल", labelEn: "Full" }]},
     { name: "बूंदी रायता", nameEn: "Boondi Raita", price: "40"},
     { name: "मिक्स वेज रायता", nameEn: "Mix Veg Raita", price: "40"},
     { name: "पाइनएप्पल रायता", nameEn: "Pineapple Raita", price: "45"}
@@ -484,17 +488,17 @@ export const menuData: MenuCategory[] = [
     emoji: "🥤",
     image: shakeImg,
     items: [
-         { name: "मिल्क शेक", nameEn: "Milk Shake", price: "75/100", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
-    { name: "चॉकलेट शेक", nameEn: "Chocolate Shake", price: "75/95", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
-    { name: "बटर स्कॉच", nameEn: "Butterscotch Shake", price: "85/115", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
-    { name: "मैंगो शेक", nameEn: "Mango Shake", price: "85/115", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
-    { name: "स्ट्रॉबेरी शेक", nameEn: "Strawberry Shake", price: "90/125", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
-    { name: "काजू शेक", nameEn: "Kaju Shake", price: "95/120", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
-    { name: "बदाम शेक", nameEn: "Badam Shake", price: "95/125", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
-    { name: "ओरियो शेक", nameEn: "Oreo Shake", price: "115/135", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
-    { name: "किट-कैट शेक", nameEn: "KitKat Shake", price: "95/115", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
-    { name: "कोल्ड कॉफी", nameEn: "Cold Coffee", price: "85/105", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"},
-    { name: "वेनिला शेक", nameEn: "Vanilla Shake", price: "75/95", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream"}
+         { name: "मिल्क शेक", nameEn: "Milk Shake", price: "75/100", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream", options: [{ label: "प्लेन", labelEn: "Plane" }, { label: "आइसक्रीम", labelEn: "Icecream" }]},
+    { name: "चॉकलेट शेक", nameEn: "Chocolate Shake", price: "75/95", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream", options: [{ label: "प्लेन", labelEn: "Plane" }, { label: "आइसक्रीम", labelEn: "Icecream" }]},
+    { name: "बटर स्कॉच", nameEn: "Butterscotch Shake", price: "85/115", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream", options: [{ label: "प्लेन", labelEn: "Plane" }, { label: "आइसक्रीम", labelEn: "Icecream" }]},
+    { name: "मैंगो शेक", nameEn: "Mango Shake", price: "85/115", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream", options: [{ label: "प्लेन", labelEn: "Plane" }, { label: "आइसक्रीम", labelEn: "Icecream" }]},
+    { name: "स्ट्रॉबेरी शेक", nameEn: "Strawberry Shake", price: "90/125", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream", options: [{ label: "प्लेन", labelEn: "Plane" }, { label: "आइसक्रीम", labelEn: "Icecream" }]},
+    { name: "काजू शेक", nameEn: "Kaju Shake", price: "95/120", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream", options: [{ label: "प्लेन", labelEn: "Plane" }, { label: "आइसक्रीम", labelEn: "Icecream" }]},
+    { name: "बदाम शेक", nameEn: "Badam Shake", price: "95/125", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream", options: [{ label: "प्लेन", labelEn: "Plane" }, { label: "आइसक्रीम", labelEn: "Icecream" }]},
+    { name: "ओरियो शेक", nameEn: "Oreo Shake", price: "115/135", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream", options: [{ label: "प्लेन", labelEn: "Plane" }, { label: "आइसक्रीम", labelEn: "Icecream" }]},
+    { name: "किट-कैट शेक", nameEn: "KitKat Shake", price: "95/115", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream", options: [{ label: "प्लेन", labelEn: "Plane" }, { label: "आइसक्रीम", labelEn: "Icecream" }]},
+    { name: "कोल्ड कॉफी", nameEn: "Cold Coffee", price: "85/105", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream", options: [{ label: "प्लेन", labelEn: "Plane" }, { label: "आइसक्रीम", labelEn: "Icecream" }]},
+    { name: "वेनिला शेक", nameEn: "Vanilla Shake", price: "75/95", quantity: "प्लेन/आइसक्रीम", quantityEn: "Plane/Icecream", options: [{ label: "प्लेन", labelEn: "Plane" }, { label: "आइसक्रीम", labelEn: "Icecream" }]}
     ],
   },
   {
@@ -504,12 +508,12 @@ export const menuData: MenuCategory[] = [
     emoji: "🍦",
     image: icecreamImg,
     items: [
-    { name: "वनीला", nameEn: "Vanilla", price: "30/40", quantity: "कप/कोन", quantityEn: "Cup/Cone"},
-    { name: "बटर स्कॉच", nameEn: "Butterscotch", price: "40/50", quantity: "कप/कोन", quantityEn: "Cup/Cone"},
-    { name: "चॉकलेट", nameEn: "Chocolate", price: "45/55", quantity: "कप/कोन", quantityEn: "Cup/Cone"},
-    { name: "स्ट्रॉबेरी", nameEn: "Strawberry", price: "40/45", quantity: "कप/कोन", quantityEn: "Cup/Cone"},
-    { name: "मैंगो", nameEn: "Mango", price: "55/60", quantity: "कप/कोन", quantityEn: "Cup/Cone"},
-    { name: "पाइनएप्पल", nameEn: "Pineapple", price: "45/55", quantity: "कप/कोन", quantityEn: "Cup/Cone"}
+    { name: "वनीला", nameEn: "Vanilla", price: "30/40", quantity: "कप/कोन", quantityEn: "Cup/Cone", options: [{ label: "कप", labelEn: "Cup" }, { label: "कोन", labelEn: "Cone" }]},
+    { name: "बटर स्कॉच", nameEn: "Butterscotch", price: "40/50", quantity: "कप/कोन", quantityEn: "Cup/Cone", options: [{ label: "कप", labelEn: "Cup" }, { label: "कोन", labelEn: "Cone" }]},
+    { name: "चॉकलेट", nameEn: "Chocolate", price: "45/55", quantity: "कप/कोन", quantityEn: "Cup/Cone", options: [{ label: "कप", labelEn: "Cup" }, { label: "कोन", labelEn: "Cone" }]},
+    { name: "स्ट्रॉबेरी", nameEn: "Strawberry", price: "40/45", quantity: "कप/कोन", quantityEn: "Cup/Cone", options: [{ label: "कप", labelEn: "Cup" }, { label: "कोन", labelEn: "Cone" }]},
+    { name: "मैंगो", nameEn: "Mango", price: "55/60", quantity: "कप/कोन", quantityEn: "Cup/Cone", options: [{ label: "कप", labelEn: "Cup" }, { label: "कोन", labelEn: "Cone" }]},
+    { name: "पाइनएप्पल", nameEn: "Pineapple", price: "45/55", quantity: "कप/कोन", quantityEn: "Cup/Cone", options: [{ label: "कप", labelEn: "Cup" }, { label: "कोन", labelEn: "Cone" }]}
     ],
   },
   {
