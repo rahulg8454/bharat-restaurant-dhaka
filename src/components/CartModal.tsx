@@ -25,7 +25,7 @@ export const CartModal = ({ isOpen, onClose }: CartModalProps) => {
                 variant="ghost"
                 size="sm"
                 onClick={clearCart}
-                className="text-white-500 hover:text-red-600"
+                className="text-white-500 hover:text-red-400"
               >
                 {t('Clear', 'साफ़ करें')}
               </Button>
