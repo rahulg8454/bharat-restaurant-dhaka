@@ -3,12 +3,15 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import { Button } from "@/components/ui/button";
 import { Plus, Minus } from "lucide-react";
+import { useState } from "react";
 
 const MenuSection = ({ category }: { category: MenuCategory }) => {
   const { language } = useLanguage();
 const { addToCart, cart, updateQuantity } = useCart();
+  
 
   const categoryTitle = language === 'en' ? category.titleEn : category.title;
+  const [selectedItem, setSelectedItem] = useState<any>(null);
  
 
   return (
@@ -100,17 +103,20 @@ const quantity =
       size="sm"
       variant="outline"
       className="h-7 w-7 p-0 rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-      onClick={() =>
-        addToCart({
-          name: item.name,
-          nameEn: item.nameEn,
-          price: item.price,
-          veg: item.veg,
-          categoryId: category.id,
-          categoryTitle: category.title,
-          categoryTitleEn: category.titleEn,
-        })
-      }
+     onClick={() => {
+  if (item.options) {
+    setSelectedItem({ item, category }); 
+  } else {
+    addToCart({
+      name: item.name,
+      nameEn: item.nameEn,
+      price: item.price,
+      categoryId: category.id,
+      categoryTitle: category.title,
+      categoryTitleEn: category.titleEn,
+    });
+  }
+}}
     >
       <Plus className="h-3 w-3" />
     </Button>
@@ -130,17 +136,20 @@ const quantity =
       </span>
 
       <button
-        onClick={() =>
-          addToCart({
-            name: item.name,
-            nameEn: item.nameEn,
-            price: item.price,
-            veg: item.veg,
-            categoryId: category.id,
-            categoryTitle: category.title,
-            categoryTitleEn: category.titleEn,
-          })
-        }
+      onClick={() => {
+  if (item.options) {
+    setSelectedItem({ item, category });
+  } else {
+    addToCart({
+      name: item.name,
+      nameEn: item.nameEn,
+      price: item.price,
+      categoryId: category.id,
+      categoryTitle: category.title,
+      categoryTitleEn: category.titleEn,
+    });
+  }
+}}
         className="text-primary"
       >
         <Plus size={14} />
