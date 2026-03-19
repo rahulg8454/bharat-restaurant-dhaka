@@ -49,11 +49,11 @@ export const CartModal = ({ isOpen, onClose }: CartModalProps) => {
                 >
                   <div
                     className={`w-3 h-3 rounded-sm border-2 flex-shrink-0 ${
-                      item.veg ? 'border-green-500' : 'border-red-500'
+                      item.veg ? 'border-green-500' : 'border-blue-500'
                     }`}
                   >
                     <div className={`w-1.5 h-1.5 rounded-full m-auto mt-0.5 ${
-                      item.veg ? 'bg-green-500' : 'bg-red-500'
+                      item.veg ? 'bg-green-500' : 'bg-yellow-500'
                     }`} />
                   </div>
 
@@ -86,7 +86,7 @@ export const CartModal = ({ isOpen, onClose }: CartModalProps) => {
                     <Button
                       size="icon"
                       variant="ghost"
-                      className="h-6 w-6 text-red-500 hover:text-red-700"
+                      className="h-6 w-6 text-red-500 hover:text-white-700"
                       onClick={() => removeFromCart(item.id)}
                     >
                       <Trash2 className="h-3 w-3" />
