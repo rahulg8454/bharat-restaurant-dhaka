@@ -123,7 +123,7 @@ const Index = () => {
 
       <FloatingContact onClick={() => setContactOpen(true)} />
       <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
-      <CartModal open={cartOpen} onClose={() => setCartOpen(false)} />
+  <CartModal isOpen={cartOpen} onClose={() => setCartOpen(false)} />
       <StickyCartBar onClick={() => setCartOpen(true)} />
     </div>
   );
