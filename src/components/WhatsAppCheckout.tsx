@@ -20,7 +20,7 @@ export const WhatsAppCheckout = ({ onClose }: WhatsAppCheckoutProps) => {
     }).join('\n');
 
     const message = encodeURIComponent(
-      `🙏 *${t('New Order from Bharat Swad Menu', 'भारत स्वाद मेन्यू से नया ऑर्डर')}*\n\n${items}\n\n*${t('Total', 'कुल')}: ₹${totalPrice.toFixed(0)}*\n\n⚠️ ${t('Please call to confirm the order', 'ऑर्डर कन्फर्म करने के लिए कॉल करें')}`
+      `🙏 *${t('Please note my order.', 'कृपया मेरा ऑर्डर नोट कर लें।')}*\n\n${items}\n\n*${t('Total', 'कुल')}: ₹${totalPrice.toFixed(0)}*\n\n⚠️ ${t('Please call to confirm the order', 'ऑर्डर कन्फर्म करने के लिए कॉल करें')}`
     );
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
