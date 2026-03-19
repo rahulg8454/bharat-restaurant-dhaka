@@ -18,7 +18,7 @@ export const CartButton = () => {
       >
         <ShoppingCart className="w-6 h-6" />
         {totalItems > 0 && (
-          <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
+          <span className="absolute -top-2 -right-2 bg-blue-500 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
             {totalItems}
           </span>
         )}
