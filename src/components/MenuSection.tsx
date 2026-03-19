@@ -49,14 +49,12 @@ const { addToCart, cart, updateQuantity } = useCart();
       {/* Menu Items Grid */}
       <div className="space-y-2">
         {category.items.map((item, index) => {
+      const itemId = `${category.id}-${item.name}`;
      
           const itemName = language === 'en' ? item.nameEn : item.name;
-     const quantity =
-  cart.find(
-    (cartItem) =>
-      cartItem.name === item.name &&
-      cartItem.categoryId === category.id
-  )?.qty || 0;
+   
+const quantity =
+  cart.find((cartItem) => cartItem.id === itemId)?.qty || 0;
           return (
             <div
               key={index}
@@ -120,10 +118,7 @@ const { addToCart, cart, updateQuantity } = useCart();
     <div className="flex items-center gap-2 border border-primary rounded-full px-2 py-1">
       <button
         onClick={() =>
-          updateQuantity(
-            `${category.id}-${item.name}`,
-            quantity - 1
-          )
+        updateQuantity(itemId, quantity - 1)
         }
         className="text-primary"
       >
