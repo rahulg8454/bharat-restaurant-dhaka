@@ -11,6 +11,7 @@ import CartButton from "@/components/CartButton";
 import CartModal from "@/components/CartModal";
 import { useLanguage } from "@/contexts/LanguageContext";
 import logoImg from "@/assets/br-logo.png";
+import StickyCartBar from "@/components/StickyCartBar";
 
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState(menuData[0].id);
@@ -123,6 +124,7 @@ const Index = () => {
       <FloatingContact onClick={() => setContactOpen(true)} />
       <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
       <CartModal open={cartOpen} onClose={() => setCartOpen(false)} />
+      <StickyCartBar onClick={() => setCartOpen(true)} />
     </div>
   );
 };
