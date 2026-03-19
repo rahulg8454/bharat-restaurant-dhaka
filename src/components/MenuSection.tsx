@@ -7,54 +7,53 @@ import { useState } from "react";
 
 const MenuSection = ({ category }: { category: MenuCategory }) => {
   const { language } = useLanguage();
-const { addToCart, cart, updateQuantity } = useCart();
+  const { addToCart, cart, updateQuantity } = useCart();
 
   const [selectedItem, setSelectedItem] = useState<any>(null);
-  
 
-  const categoryTitle = language === 'en' ? category.titleEn : category.title;
+  const categoryTitle =
+    language === "en" ? category.titleEn : category.title;
+
 
   const handleOptionSelect = (item: any, category: any, option: any) => {
-  addToCart({
-    name: `${item.name} (${option.label})`,
-    nameEn: `${item.nameEn} (${option.labelEn})`,
-    price: item.price,
-    categoryId: category.id,
-    categoryTitle: category.title,
-    categoryTitleEn: category.titleEn,
-  });
+    const prices = item.price.split("/");
 
-  setSelectedItem(null);
-};
- 
+    let selectedPrice = prices[0];
+
+    if (
+      option.labelEn.toLowerCase() === "full" ||
+      option.labelEn.toLowerCase() === "large" ||
+      option.labelEn.toLowerCase() === "cone" ||
+      option.labelEn.toLowerCase() === "gravy"
+    ) {
+      selectedPrice = prices[1] || prices[0];
+    }
+
+    addToCart({
+      name: `${item.name} (${option.label})`,
+      nameEn: `${item.nameEn} (${option.labelEn})`,
+      price: selectedPrice,
+      categoryId: category.id,
+      categoryTitle: category.title,
+      categoryTitleEn: category.titleEn,
+    });
+
+    setSelectedItem(null);
+  };
 
   return (
     <section id={category.id} className="max-w-3xl mx-auto px-3 py-4">
 
-      {/* Category Header with image banner */}
-      <div
-        className="relative overflow-hidden rounded-2xl mb-4 shadow-lg"
-        style={{ border: "1.5px solid hsl(var(--primary) / 0.2)" }}
-      >
-        {/* Food image */}
+      {/* HEADER */}
+      <div className="relative overflow-hidden rounded-2xl mb-4 shadow-lg">
         <div className="relative h-36 md:h-44 w-full overflow-hidden">
           <img
             src={category.image}
             alt={categoryTitle}
             className="w-full h-full object-cover"
-            loading="lazy"
-          />
-          {/* Gradient overlay */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to bottom, transparent 30%, hsl(var(--card) / 0.95) 100%)",
-            }}
           />
         </div>
 
-        {/* Category title and emoji */}
         <div className="absolute bottom-0 left-0 right-0 px-4 py-3">
           <h2 className="text-xl font-bold flex items-center gap-2">
             <span>{category.emoji}</span>
@@ -63,156 +62,152 @@ const { addToCart, cart, updateQuantity } = useCart();
         </div>
       </div>
 
-      {/* Menu Items Grid */}
+      {/* MENU */}
       <div className="space-y-2">
-       {category.items.map((item, index) => {
+        {category.items.map((item, index) => {
 
-  const itemId = `${category.id}-${item.nameEn}`;
+        
+          const quantity = cart
+            .filter((c) => c.nameEn.startsWith(item.nameEn))
+            .reduce((sum, c) => sum + c.qty, 0);
 
-  const itemName =
-    language === 'en' ? item.nameEn : item.name;
+          const itemName =
+            language === "en" ? item.nameEn : item.name;
 
-  const quantity =
-    cart.find((cartItem) => cartItem.id === itemId)?.qty || 0;
-
-  return (
+          return (
             <div
               key={index}
-              className="menu-item-card flex items-center justify-between px-4 py-3 rounded-xl gap-3"
+              className="flex items-center justify-between px-4 py-3 rounded-xl"
               style={{
                 background: "hsl(var(--card))",
                 border: "1px solid hsl(var(--border) / 0.6)",
               }}
             >
-              {/* Item info */}
-           <div className="flex items-center gap-3 flex-1 min-w-0">
-  {/* Veg indicator */}
-  <div
-   className="w-4 h-4 shrink-0 rounded-sm border-2 border-green-500 flex items-center justify-center"
-  >
-    <div
-     className="w-2 h-2 rounded-full bg-green-500"
-    />
-  </div>
+              {/* LEFT */}
+              <div className="flex items-center gap-3 flex-1">
+                <div className="w-4 h-4 border-2 border-green-500 rounded-sm flex items-center justify-center">
+                  <div className="w-2 h-2 bg-green-500 rounded-full" />
+                </div>
 
-  {/* Item name */}
-  <div className="min-w-0">
-    <p className="text-sm font-semibold truncate">{itemName}</p>
-  {(item.quantity || item.quantityEn) && (
-  <p className="text-xs text-muted-foreground">
-    {language === "en"
-      ? item.quantityEn || item.quantity
-      : item.quantity}
-  </p>
-)}
-  </div>
-</div>
+                <div>
+                  <p className="text-sm font-semibold">{itemName}</p>
 
-              {/* Price and Add button */}
-             {/* Price and Add button */}
-<div className="flex items-center gap-2 shrink-0">
-  <span className="text-sm font-bold text-primary">
-    ₹{item.price}
-  </span>
-
-  {quantity === 0 ? (
-    <Button
-      size="sm"
-      variant="outline"
-      className="h-7 w-7 p-0 rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-     onClick={() => {
-  if (item.options) {
-    setSelectedItem({ item, category }); 
-  } else {
-    addToCart({
-      name: item.name,
-      nameEn: item.nameEn,
-      price: item.price,
-      categoryId: category.id,
-      categoryTitle: category.title,
-      categoryTitleEn: category.titleEn,
-    });
-  }
-}}
-    >
-      <Plus className="h-3 w-3" />
-    </Button>
-  ) : (
-    <div className="flex items-center gap-2 border border-primary rounded-full px-2 py-1">
-      <button
-        onClick={() =>
-     updateQuantity(`${category.id}-${item.nameEn}`, quantity - 1)
-        }
-        className="text-primary"
-      >
-        <Minus size={14} />
-      </button>
-
-      <span className="text-sm font-bold text-primary">
-        {quantity}
-      </span>
-
-      <button
-      onClick={() => {
-  if (item.options) {
-    setSelectedItem({ item, category });
-  } else {
-    addToCart({
-      name: item.name,
-      nameEn: item.nameEn,
-      price: item.price,
-      categoryId: category.id,
-      categoryTitle: category.title,
-      categoryTitleEn: category.titleEn,
-    });
-  }
-}}
-        className="text-primary"
-      >
-        <Plus size={14} />
-      </button>
-    </div>
-  )}
-</div>
+                  {(item.quantity || item.quantityEn) && (
+                    <p className="text-xs text-muted-foreground">
+                      {language === "en"
+                        ? item.quantityEn || item.quantity
+                        : item.quantity}
+                    </p>
+                  )}
+                </div>
               </div>
-      
+
+              {/* RIGHT */}
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-primary">
+                  ₹{item.price}
+                </span>
+
+                {quantity === 0 ? (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="h-7 w-7 p-0 rounded-full"
+                    onClick={() => {
+                      if (item.options) {
+                        setSelectedItem({ item, category });
+                      } else {
+                        addToCart({
+                          name: item.name,
+                          nameEn: item.nameEn,
+                          price: item.price,
+                          categoryId: category.id,
+                          categoryTitle: category.title,
+                          categoryTitleEn: category.titleEn,
+                        });
+                      }
+                    }}
+                  >
+                    <Plus size={14} />
+                  </Button>
+                ) : (
+                  <div className="flex items-center gap-2 border rounded-full px-2 py-1">
+                    <button
+                      onClick={() =>
+                        updateQuantity(
+                          `${category.id}-${item.nameEn}`,
+                          quantity - 1
+                        )
+                      }
+                    >
+                      <Minus size={14} />
+                    </button>
+
+                    <span>{quantity}</span>
+
+                    <button
+                      onClick={() => {
+                        if (item.options) {
+                          setSelectedItem({ item, category });
+                        } else {
+                          addToCart({
+                            name: item.name,
+                            nameEn: item.nameEn,
+                            price: item.price,
+                            categoryId: category.id,
+                            categoryTitle: category.title,
+                            categoryTitleEn: category.titleEn,
+                          });
+                        }
+                      }}
+                    >
+                      <Plus size={14} />
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
           );
         })}
       </div>
+
+      {/* OPTION MODAL */}
       {selectedItem && (
-  <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-    <div className="bg-white rounded-xl p-4 w-72">
-      <h3 className="font-bold mb-3 text-center">
-        {language === "en"
-          ? selectedItem.item.nameEn
-          : selectedItem.item.name}
-      </h3>
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-4 w-72">
+            <h3 className="font-bold text-center mb-3">
+              {language === "en"
+                ? selectedItem.item.nameEn
+                : selectedItem.item.name}
+            </h3>
 
-      <div className="flex flex-col gap-2">
-        {selectedItem.item.options.map((opt: any, i: number) => (
-          <button
-            key={i}
-            className="border rounded-lg py-2 hover:bg-primary hover:text-white"
-            onClick={() =>
-              handleOptionSelect(selectedItem.item, selectedItem.category, opt)
-            }
-          >
-            {language === "en" ? opt.labelEn : opt.label}
-          </button>
-        ))}
-      </div>
+            {selectedItem.item.options.map((opt: any, i: number) => (
+              <button
+                key={i}
+                className="w-full border rounded-lg py-2 mb-2"
+                onClick={() =>
+                  handleOptionSelect(
+                    selectedItem.item,
+                    selectedItem.category,
+                    opt
+                  )
+                }
+              >
+                {language === "en" ? opt.labelEn : opt.label}
+              </button>
+            ))}
 
-      <button
-        onClick={() => setSelectedItem(null)}
-        className="mt-3 text-sm text-gray-500"
-      >
-        Cancel
-      </button>
-    </div>
-  </div>
-)}
+            <button
+              onClick={() => setSelectedItem(null)}
+              className="text-sm text-gray-500 mt-2"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
 
-export default MenuSection;          
+export default MenuSection;
