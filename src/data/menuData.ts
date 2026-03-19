@@ -526,7 +526,7 @@ export const menuData: MenuCategory[] = [
         { name: "रसगुल्ला", nameEn: "Rasgulla", price: "20"},
     { name: "राज भोग", nameEn: "Raj Bhog", price: "30"},
     { name: "गुलाब जामुन", nameEn: "Gulab Jamun", price: "20"},
-    { name: "केम चोप", nameEn: "Khem Chop", price: "20"},
+    { name: "क्रीम चोप", nameEn: "Cream Chap", price: "20"},
     { name: "छेना रोल", nameEn: "Chhena Roll", price: "40"},
     { name: "रस मलाई", nameEn: "Ras Malai", price: "50"}
     ],
