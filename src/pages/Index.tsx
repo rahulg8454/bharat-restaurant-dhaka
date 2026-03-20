@@ -113,8 +113,8 @@ const Index = () => {
           <div className="mt-4 pt-4" style={{borderTop: "1px solid hsl(var(--border))"}}>
             <p className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7)"}}>
               {language === "en"
-                ? "© 2026 Bharat Restaurant — All rights reserved"
-                : "© 2026 भारत रेस्टोरेंट — सभी अधिकार सुरक्षित"}
+                ? "© Bharat Restaurant — All rights reserved"
+                : "© भारत रेस्टोरेंट — सभी अधिकार सुरक्षित"}
             </p>
           </div>
         </div>
