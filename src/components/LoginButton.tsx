@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { User, LogOut, UserCircle } from 'lucide-react';
+import { User, LogOut, UserCircle, ShoppingBag } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useState, useRef, useEffect } from 'react';
@@ -59,15 +59,21 @@ const LoginButton = () => {
           {profile?.name?.split(' ')[0] || t('Me', 'मैं')}
         </span>
       </button>
-
       {menuOpen && (
-        <div className="absolute right-0 top-10 bg-white rounded-xl shadow-xl border border-gray-100 py-1 min-w-[140px] z-50">
+        <div className="absolute right-0 top-10 bg-white rounded-xl shadow-xl border border-gray-100 py-1 min-w-[150px] z-50">
           <button
             onClick={() => { navigate('/profile'); setMenuOpen(false); }}
             className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
           >
             <User className="w-4 h-4 text-gray-400" />
-            {t('My Profile', 'मेरा प्रोफाइल')}
+            {t('My Profile', 'मेरा प्रोयफाइल')}
+          </button>
+          <button
+            onClick={() => { navigate('/orders'); setMenuOpen(false); }}
+            className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            <ShoppingBag className="w-4 h-4 text-gray-400" />
+            {t('Order History', 'ऑर्डर इतिहास')}
           </button>
           <div className="border-t border-gray-100" />
           <button
