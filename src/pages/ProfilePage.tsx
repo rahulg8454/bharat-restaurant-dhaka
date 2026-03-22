@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 import { useAuth } from '../contexts/AuthContext';
 import { useLanguage } from '../contexts/LanguageContext';
+import { ShoppingBag } from 'lucide-react';
 
 const ProfilePage = () => {
   const { user, profile, signOut, refreshProfile } = useAuth();
@@ -88,12 +89,28 @@ const ProfilePage = () => {
           </p>
         </div>
 
+        {/* Order History Button */}
+        <button
+          onClick={() => navigate('/orders')}
+          className="w-full flex items-center gap-3 bg-white rounded-2xl p-4 mb-4 shadow-sm border border-gray-100 hover:border-green-300 hover:bg-green-50 transition-colors text-left"
+        >
+          <ShoppingBag className="h-5 w-5 text-green-600" />
+          <div>
+            <p className="font-semibold text-sm text-gray-800">
+              {t('Order History', 'ऑर्डर इतिहास')}
+            </p>
+            <p className="text-xs text-gray-400">
+              {t('View your past orders', 'अपने पिछले ऑर्डर देखें')}
+            </p>
+          </div>
+          <span className="ml-auto text-gray-400">›</span>
+        </button>
+
         {/* Profile Form */}
         <form onSubmit={handleSave} className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 space-y-4">
           <h2 className="font-bold text-gray-800 mb-2">
             {t('Delivery Details', 'डिलीवरी जानकारी')}
           </h2>
-
           <div>
             <label className="block text-xs text-gray-500 mb-1">
               {t('Full Name', 'पूरा नाम')} *
@@ -107,7 +124,6 @@ const ProfilePage = () => {
               className="w-full border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
-
           <div>
             <label className="block text-xs text-gray-500 mb-1">
               {t('Mobile Number', 'मोबाइल नंबर')} *
@@ -121,7 +137,6 @@ const ProfilePage = () => {
               className="w-full border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
-
           <div>
             <label className="block text-xs text-gray-500 mb-1">
               {t('Delivery Address', 'डिलीवरी पता')} *
@@ -129,31 +144,28 @@ const ProfilePage = () => {
             <textarea
               value={address}
               onChange={e => setAddress(e.target.value)}
-              placeholder={t('House no., Street, Area, City', 'घर नंबर, गली, ऐरिया, शहर')}
+              placeholder={t('House no., Street, Area, City', 'घर नंबर, गली, एरिया, शहर')}
               required
               rows={3}
               className="w-full border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
             />
           </div>
-
           {error && (
             <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
               {error}
             </div>
           )}
-
           {saved && (
             <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm font-medium">
               {t('✓ Profile saved successfully!', '✓ प्रोफाइल सफलतापूर्वक सहेजा गया!')}
             </div>
           )}
-
           <button
             type="submit"
             disabled={saving}
             className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition-colors disabled:opacity-60"
           >
-            {saving ? t('Saving...', 'सहेज रहे हैं...') : t('Save Profile', 'प्रोफाइल सहेजें')}
+            {saving ? t('Saving...', 'सहेज रहे हैं...') : t('Save Profile', 'प्रोयफाइल सहेजें')}
           </button>
         </form>
       </div>
