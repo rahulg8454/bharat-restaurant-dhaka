@@ -12,6 +12,7 @@ import CartModal from "@/components/CartModal";
 import { useLanguage } from "@/contexts/LanguageContext";
 import logoImg from "@/assets/br-logo.png";
 import StickyCartBar from "@/components/StickyCartBar";
+import LoginButton from "@/components/LoginButton";
 
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState(menuData[0].id);
@@ -44,12 +45,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Fixed top bar with Language Toggle and Cart */}
+      {/* Fixed top bar with Language Toggle, Login and Cart */}
       <div className="fixed top-0 right-0 z-50 flex items-center gap-2 p-2">
+        <LoginButton />
         <LanguageToggle />
         <CartButton onClick={() => setCartOpen(true)} />
       </div>
-
       <HeroSection onContactClick={() => setContactOpen(true)} />
       <CategoryNav activeCategory={activeCategory} onSelect={handleSelect} />
       <main className="pb-28">
@@ -57,7 +58,6 @@ const Index = () => {
           <MenuSection key={cat.id} category={cat} />
         ))}
       </main>
-
       {/* Footer */}
       <footer>
         {/* Gold top border */}
@@ -99,12 +99,12 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-3 mb-1.5 text-sm" style={{color: "hsl(var(--muted-foreground))"}}>
             <div className="flex flex-col items-center gap-0.5">
               <span>📞 +91-7979745730</span>
-              <span className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7)"}}>Vivek Gupta</span>
+              <span className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7)"}}> Vivek Gupta</span>
             </div>
             <span className="hidden sm:inline opacity-40">|</span>
             <div className="flex flex-col items-center gap-0.5">
               <span>📞 +91-9471217870</span>
-              <span className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7)"}}>Niraj Gupta</span>
+              <span className="text-xs" style={{color: "hsl(var(--muted-foreground) / 0.7)"}}> Niraj Gupta</span>
             </div>
           </div>
           <p className="text-sm font-medium mb-1" style={{color: "hsl(var(--muted-foreground))"}}>
@@ -120,10 +120,9 @@ const Index = () => {
         </div>
         <DeveloperCredit />
       </footer>
-
       <FloatingContact onClick={() => setContactOpen(true)} />
       <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
-  <CartModal isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+      <CartModal isOpen={cartOpen} onClose={() => setCartOpen(false)} />
       <StickyCartBar onClick={() => setCartOpen(true)} />
     </div>
   );
