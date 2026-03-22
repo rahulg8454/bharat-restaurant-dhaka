@@ -4,6 +4,7 @@ import { useCart } from '../contexts/CartContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from '../lib/supabaseClient';
 
 const WHATSAPP_NUMBER = '917979745730';
 
@@ -17,7 +18,48 @@ export const WhatsAppCheckout = ({ onClose }: WhatsAppCheckoutProps) => {
   const { user, profile } = useAuth();
   const navigate = useNavigate();
 
-  const handleWhatsAppOrder = () => {
+  const saveOrderToSupabase = async () => {
+    if (!user) return;
+    try {
+      const totalAmount = totalPrice;
+      const { data: order, error: orderError } = await supabase
+        .from('orders')
+        .insert({
+          user_id: user.id,
+          status: 'pending',
+          total_amount: totalAmount,
+          phone_number: profile?.phone || null,
+          delivery_address: profile?.address || null,
+        })
+        .select()
+        .single();
+
+      if (orderError || !order) {
+        console.error('Error saving order:', orderError);
+        return;
+      }
+
+      const orderItems = cart.map((item) => ({
+        order_id: order.id,
+        menu_item_name: language === 'en' ? item.nameEn : item.name,
+        menu_item_id: item.id?.toString() || null,
+        quantity: item.qty,
+        price: parseFloat(item.price.split('/')[0]),
+      }));
+
+      const { error: itemsError } = await supabase
+        .from('order_items')
+        .insert(orderItems);
+
+      if (itemsError) {
+        console.error('Error saving order items:', itemsError);
+      }
+    } catch (err) {
+      console.error('Error saving order to Supabase:', err);
+    }
+  };
+
+  const handleWhatsAppOrder = async () => {
     // If not logged in, redirect to login first
     if (!user) {
       navigate('/login');
@@ -28,7 +70,7 @@ export const WhatsAppCheckout = ({ onClose }: WhatsAppCheckoutProps) => {
     const items = cart.map((item) => {
       const displayName = language === 'en' ? item.nameEn : item.name;
       const option = item.quantity ? ` (${item.quantity})` : '';
-      return `• ${displayName}${option} x${item.qty} - \u20B9${parseFloat(item.price.split('/')[0]) * item.qty}`;
+      return `• ${displayName}${option} x${item.qty} - ₹${parseFloat(item.price.split('/')[0]) * item.qty}`;
     }).join('\n');
 
     // Build customer info block
@@ -37,14 +79,18 @@ export const WhatsAppCheckout = ({ onClose }: WhatsAppCheckoutProps) => {
     const customerAddress = profile?.address || t('Not provided', 'नहीं दिया');
 
     const message = encodeURIComponent(
-      `\uD83D\uDE4F *${t('Bharat Restaurant - New Order', '\u092D\u093E\u0930\u0924 \u0930\u0947\u0938\u094D\u091F\u094B\u0930\u0947\u0902\u091F - \u0928\u092F\u093E \u0911\u0930\u094D\u0921\u0930')}*\n\n` +
-      `\uD83D\uDC64 *${t('Name', '\u0928\u093E\u092E')}:* ${customerName}\n` +
-      `\uD83D\uDCF1 *${t('Phone', '\u092B\u093C\u094B\u0928')}:* ${customerPhone}\n` +
-      `\uD83D\uDCCD *${t('Address', '\u092A\u0924\u093E')}:* ${customerAddress}\n\n` +
-      `\uD83D\uDED2 *${t('Order Items', '\u0911\u0930\u094D\u0921\u0930 \u0906\u0907\u091F\u092E')}:*\n${items}\n\n` +
-      `*${t('Total', '\u0915\u0941\u0932')}: \u20B9${totalPrice.toFixed(0)}*\n\n` +
-      `\u26A0\uFE0F ${t('Please call to confirm the order', '\u0911\u0930\u094D\u0921\u0930 \u0915\u0928\u094D\u092B\u0930\u094D\u092E \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093F\u090F \u0915\u0949\u0932 \u0915\u0930\u0947\u0902')}`
+      `🙏 *${t('Bharat Restaurant - New Order', 'भारत रेस्टोरेंट - नया ऑर्डर')}*\n\n` +
+      `👤 *${t('Name', 'नाम')}:* ${customerName}\n` +
+      `📱 *${t('Phone', 'फ़ोन')}:* ${customerPhone}\n` +
+      `📍 *${t('Address', 'पता')}:* ${customerAddress}\n\n` +
+      `🛒 *${t('Order Items', 'ऑर्डर आइटम')}:*\n${items}\n\n` +
+      `*${t('Total', 'कुल')}: ₹${totalPrice.toFixed(0)}*\n\n` +
+      `⚠️ ${t('Please call to confirm the order', 'ऑर्डर कन्फर्म करने के लिए कॉल करें')}`
     );
+
+    // Save order to Supabase first
+    await saveOrderToSupabase();
+
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
     clearCart();
     onClose();
@@ -69,26 +115,25 @@ export const WhatsAppCheckout = ({ onClose }: WhatsAppCheckoutProps) => {
           <span>
             {t(
               'Add your name, phone & address in profile for faster ordering.',
-              '\u0924\u0947\u091C\u0940 \u0911\u0930\u094D\u0921\u0930 \u0915\u0947 \u0932\u093F\u090F \u092A\u094D\u0930\u094B\u092B\u093E\u0907\u0932 \u092E\u0947\u0902 \u0928\u093E\u092E, \u092B\u093C\u094B\u0928 \u0935 \u092A\u0924\u093E \u091C\u094B\u0921\u093C\u0947\u0902\u0964'
+              'तेजी ऑर्डर के लिए प्रोफाइल में नाम, फ़ोन व पता जोड़ें।'
             )}
           </span>
           <button
             onClick={() => { navigate('/profile'); onClose(); }}
             className="ml-auto underline font-semibold whitespace-nowrap"
           >
-            {t('Edit', '\u0938\u0902\u092A\u093E\u0926\u093F\u0924 \u0915\u0930\u0947\u0902')}
+            {t('Edit', 'संपादित करें')}
           </button>
         </div>
       )}
-
       <Button
         className="w-full bg-green-600 hover:bg-green-700 text-white font-bold"
         onClick={handleWhatsAppOrder}
       >
         <MessageCircle className="mr-2 h-4 w-4" />
         {!user
-          ? t('Login to Order on WhatsApp', '\u0911\u0930\u094D\u0921\u0930 \u0915\u0947 \u0932\u093F\u090F \u0932\u0949\u0917\u093F\u0928 \u0915\u0930\u0947\u0902')
-          : t('Order on WhatsApp', 'WhatsApp \u092A\u0930 \u0911\u0930\u094D\u0921\u0930 \u0915\u0930\u0947\u0902')
+          ? t('Login to Order on WhatsApp', 'ऑर्डर के लिए लॉगिन करें')
+          : t('Order on WhatsApp', 'WhatsApp पर ऑर्डर करें')
         }
       </Button>
       <div className="text-xs text-center text-muted-foreground px-2 py-2 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800">
@@ -96,7 +141,7 @@ export const WhatsAppCheckout = ({ onClose }: WhatsAppCheckoutProps) => {
         <span className="text-amber-700 dark:text-amber-400 font-medium">
           {t(
             'After sending the order on WhatsApp, you must call to confirm: 7979745730',
-            'WhatsApp \u092A\u0930 \u0911\u0930\u094D\u0921\u0930 \u092D\u0947\u091C\u0928\u0947 \u0915\u0947 \u092C\u093E\u0926 \u0915\u0928\u094D\u092B\u0930\u094D\u092E \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093F\u090F \u0915\u0949\u0932 \u0915\u0930\u0947\u0902: 7979745730'
+            'WhatsApp पर ऑर्डर भेजने के बाद कन्फर्म करने के लिए कॉल करें: 7979745730'
           )}
         </span>
       </div>
