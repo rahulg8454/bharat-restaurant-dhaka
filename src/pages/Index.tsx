@@ -50,7 +50,7 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Fixed top bar with Language Toggle, Login and Cart */}
 {/* LEFT SIDE buttons */}
-        <div className="fixed top-3 right-3 z-50">
+        <div className="fixed top-3 left-3 z-50">
 
   <LanguageToggle />
 
@@ -58,7 +58,7 @@ const Index = () => {
 
 
 {/* RIGHT SIDE  */}
-<div className="fixed top-3 left-3 z-50 flex flex-col items-start gap-2">
+<div className="fixed top-3 right-3 z-50 flex flex-col items-start gap-2">
 
   <LoginButton />
 
