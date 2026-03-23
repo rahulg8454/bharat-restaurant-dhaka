@@ -46,7 +46,7 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
             {language === 'en' ? "🌸 Om Shri Ganeshay Namah 🌸" : "🌸 ॐ श्री गणेशाय नमः 🌸"}
           </p>
           <p className="text-primary-foreground/70 text-sm tracking-wider">
-            {language === 'en' ? "🙏 Welcome 🙏" : "🙏 आपका स्वागत है 🙏"}
+            {language === 'en' ? "🙏 Welcome to Bharat Restaurant🙏" : "🙏 भारत रेस्टोरेंट में आपका स्वागत है 🙏"}
           </p>
         </div>
 
@@ -101,7 +101,7 @@ const HeroSection = ({ onContactClick }: { onContactClick: () => void }) => {
 
         {/* Taglines */}
         <p className="text-primary-foreground/90 text-lg md:text-xl mb-1 font-bold" style={{textShadow: "0 1px 4px hsl(0 0% 0% / 0.3)"}}>
-          {language === 'en' ? "🍛 Pure Veg Food — Taste Like Home 🍛" : "🍛 शुद्ध शाकाहारी भोजन — घर जैसा स्वाद 🍛"}
+          {language === 'en' ? "🍛 Authentic Flavours of India 🍛" : "🍛 स्वाद में शुद्धता 🍛"}
         </p>
         <p className="text-primary-foreground/60 text-sm mb-5 italic font-medium">
           {language === 'en' ? '"Where every bite speaks mother\'s love"' : '"जहाँ हर निवाला बोले — माँ के हाथ का प्यार"'}
