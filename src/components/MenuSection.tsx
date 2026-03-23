@@ -76,9 +76,10 @@ const MenuSection = ({ category }: { category: MenuCategory }) => {
             language === "en" ? item.nameEn : item.name;
 
           return (
-            <div
-              key={index}
-              className="flex items-center justify-between px-4 py-3 rounded-xl"
+  <div
+    id={`item-${item.nameEn}`}
+    key={index}
+    className="flex items-center justify-between px-4 py-3 rounded-xl"
               style={{
                 background: "hsl(var(--card))",
                 border: "1px solid hsl(var(--border) / 0.6)",
