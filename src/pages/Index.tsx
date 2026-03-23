@@ -13,11 +13,13 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import logoImg from "@/assets/br-logo.png";
 import StickyCartBar from "@/components/StickyCartBar";
 import LoginButton from "@/components/LoginButton";
+import SearchButton from "@/components/SearchButton";
 
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState(menuData[0].id);
   const [contactOpen, setContactOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const { language } = useLanguage();
 
   const handleSelect = (id: string) => {
@@ -46,11 +48,23 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Fixed top bar with Language Toggle, Login and Cart */}
+{/* LEFT SIDE buttons */}
 <div className="fixed top-3 left-3 z-50 flex flex-col items-start gap-2">
-        <LoginButton />
-        <LanguageToggle />
-        <CartButton onClick={() => setCartOpen(true)} />
-      </div>
+
+  <LoginButton />
+
+  <SearchButton onClick={() => setSearchOpen(true)} />
+
+  <CartButton onClick={() => setCartOpen(true)} />
+
+</div>
+
+{/* RIGHT SIDE language */}
+<div className="fixed top-3 right-3 z-50">
+
+  <LanguageToggle />
+
+</div>
       <HeroSection onContactClick={() => setContactOpen(true)} />
       <CategoryNav activeCategory={activeCategory} onSelect={handleSelect} />
       <main className="pb-28">
