@@ -9,30 +9,35 @@ const SearchModal = ({ open, onClose }: any) => {
 
   if (!open) return null;
 
-  // collect all items
-  const allItems = menuData.flatMap(cat => cat.items);
+  // flatten all items
+  const allItems = menuData.flatMap(cat =>
+    cat.items.map(item => ({
+      ...item,
+      categoryId: cat.id
+    }))
+  );
 
   // filter logic
   const filteredItems = allItems.filter(item => {
 
-    const nameEn = item.name?.en?.toLowerCase() || "";
-    const nameHi = item.name?.hi?.toLowerCase() || "";
+    const nameHindi = item.name.toLowerCase();
+    const nameEnglish = item.nameEn.toLowerCase();
 
     return (
-      nameEn.includes(query.toLowerCase()) ||
-      nameHi.includes(query.toLowerCase())
+      nameHindi.includes(query.toLowerCase()) ||
+      nameEnglish.includes(query.toLowerCase())
     );
   });
 
   return (
     <div className="fixed inset-0 bg-black/40 z-50 flex justify-center items-start pt-24">
 
-      <div className="bg-white w-[90%] max-w-md p-4 rounded-xl shadow-xl">
+      <div className="bg-white w-[92%] max-w-md p-4 rounded-xl shadow-xl">
 
         <div className="flex justify-between mb-3">
 
           <h2 className="font-semibold">
-            {language === "en" ? "Search Item" : "आइटम खोजें"}
+            {language === "en" ? "Search Items" : "आइटम खोजें"}
           </h2>
 
           <button onClick={onClose}>✖</button>
@@ -40,34 +45,41 @@ const SearchModal = ({ open, onClose }: any) => {
         </div>
 
         <input
+          autoFocus
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder={language === "en" ? "Type food name..." : "खाना खोजें..."}
+          placeholder={
+            language === "en"
+              ? "Type food item name..."
+              : "खाने का नाम लिखें..."
+          }
           className="w-full border p-2 rounded mb-3"
         />
 
-        <div className="max-h-60 overflow-y-auto space-y-2">
+        <div className="max-h-64 overflow-y-auto space-y-2">
 
-          {filteredItems.map(item => (
+          {filteredItems.map((item, index) => (
 
             <div
-              key={item.id}
-              className="border rounded p-2 text-sm"
+              key={index}
+              className="border rounded p-2 text-sm cursor-pointer hover:bg-gray-50"
             >
 
               {language === "en"
-                ? item.name.en
-                : item.name.hi}
+                ? item.nameEn
+                : item.name}
 
             </div>
 
           ))}
 
           {filteredItems.length === 0 && (
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500 text-center">
+
               {language === "en"
-                ? "No items found"
+                ? "No matching item"
                 : "कोई आइटम नहीं मिला"}
+
             </p>
           )}
 
