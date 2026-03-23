@@ -58,20 +58,34 @@ const SearchModal = ({ open, onClose }: any) => {
 
         <div className="max-h-64 overflow-y-auto space-y-2">
 
-          {filteredItems.map((item, index) => (
+     {filteredItems.map((item, index) => (
 
-            <div
-              key={index}
-              className="border rounded p-2 text-sm cursor-pointer hover:bg-gray-50"
-            >
+  <div
+    key={index}
+    className="border rounded p-2 text-sm cursor-pointer hover:bg-gray-50"
+    
+    onClick={() => {
 
-              {language === "en"
-                ? item.nameEn
-                : item.name}
+      onClose();
 
-            </div>
+      document
+        .getElementById(item.categoryId)
+        ?.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
 
-          ))}
+    }}
+
+  >
+
+    {language === "en"
+      ? item.nameEn
+      : item.name}
+
+  </div>
+
+))}
 
           {filteredItems.length === 0 && (
             <p className="text-sm text-gray-500 text-center">
