@@ -37,7 +37,7 @@ const LoginButton = () => {
         title={t('Login', 'लॉगिन')}
       >
         <User className="w-4 h-4" />
-        <span className="hidden sm:inline">{t('Login', 'लॉगिन')}</span>
+       <span>{t('Login', 'लॉगिन')}</span>
       </button>
     );
   }
@@ -66,7 +66,7 @@ const LoginButton = () => {
             className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
           >
             <User className="w-4 h-4 text-gray-400" />
-            {t('My Profile', 'मेरा प्रोयफाइल')}
+            {t('My Profile', 'मेरा प्रोफाइल')}
           </button>
           <button
             onClick={() => { navigate('/orders'); setMenuOpen(false); }}
