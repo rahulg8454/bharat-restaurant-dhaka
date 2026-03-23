@@ -163,4 +163,28 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  
+}
+.search-highlight {
+
+  animation: highlightFade 2.5s ease;
+
+  border: 2px solid #f59e0b;
+
+  background: #fff7ed;
+
+}
+
+@keyframes highlightFade {
+
+  0% {
+    background: #fde68a;
+    transform: scale(1.03);
+  }
+
+  100% {
+    background: transparent;
+    transform: scale(1);
+  }
+
 }/* fix redeploy */
