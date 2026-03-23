@@ -49,6 +49,14 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Fixed top bar with Language Toggle, Login and Cart */}
 {/* LEFT SIDE buttons */}
+        <div className="fixed top-3 right-3 z-50">
+
+  <LanguageToggle />
+
+</div>
+
+
+{/* RIGHT SIDE  */}
 <div className="fixed top-3 left-3 z-50 flex flex-col items-start gap-2">
 
   <LoginButton />
@@ -56,13 +64,6 @@ const Index = () => {
   <SearchButton onClick={() => setSearchOpen(true)} />
 
   <CartButton onClick={() => setCartOpen(true)} />
-
-</div>
-
-{/* RIGHT SIDE language */}
-<div className="fixed top-3 right-3 z-50">
-
-  <LanguageToggle />
 
 </div>
       <HeroSection onContactClick={() => setContactOpen(true)} />
