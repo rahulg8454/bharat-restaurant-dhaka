@@ -14,6 +14,7 @@ import logoImg from "@/assets/br-logo.png";
 import StickyCartBar from "@/components/StickyCartBar";
 import LoginButton from "@/components/LoginButton";
 import SearchButton from "@/components/SearchButton";
+import SearchModal from "@/components/SearchModal";
 
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState(menuData[0].id);
@@ -138,6 +139,7 @@ const Index = () => {
       <FloatingContact onClick={() => setContactOpen(true)} />
       <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
       <CartModal isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+        <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
       <StickyCartBar onClick={() => setCartOpen(true)} />
     </div>
   );
