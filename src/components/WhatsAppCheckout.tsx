@@ -114,8 +114,8 @@ export const WhatsAppCheckout = ({ onClose }: WhatsAppCheckoutProps) => {
           <User className="h-3.5 w-3.5 flex-shrink-0" />
           <span>
             {t(
-              'Add your name, phone & address in profile for faster ordering.',
-              'तेजी ऑर्डर के लिए प्रोफाइल में नाम, फ़ोन व पता जोड़ें।'
+              'Add your name, phone & address in profile for ordering.',
+              'ऑर्डर के लिए प्रोफाइल में नाम, फ़ोन व पता जोड़ें।'
             )}
           </span>
           <button
