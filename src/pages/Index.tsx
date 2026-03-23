@@ -46,7 +46,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Fixed top bar with Language Toggle, Login and Cart */}
-      <div className="fixed top-0 right-0 z-50 flex items-center gap-2 p-2">
+<div className="fixed top-3 left-3 z-50 flex flex-col items-start gap-2">
         <LoginButton />
         <LanguageToggle />
         <CartButton onClick={() => setCartOpen(true)} />
