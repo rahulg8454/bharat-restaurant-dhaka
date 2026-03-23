@@ -64,18 +64,36 @@ const SearchModal = ({ open, onClose }: any) => {
     key={index}
     className="border rounded p-2 text-sm cursor-pointer hover:bg-gray-50"
     
-    onClick={() => {
+ onClick={() => {
 
-      onClose();
+  onClose();
 
-      document
-        .getElementById(item.categoryId)
-        ?.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+  // scroll to category section
+  document
+    .getElementById(item.categoryId)
+    ?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
 
-    }}
+  // highlight item
+  setTimeout(() => {
+
+    const el = document.getElementById(`item-${item.nameEn}`);
+
+    if (el) {
+
+      el.classList.add("search-highlight");
+
+      setTimeout(() => {
+        el.classList.remove("search-highlight");
+      }, 2500);
+
+    }
+
+  }, 400);
+
+}}
 
   >
 
