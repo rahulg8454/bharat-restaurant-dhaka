@@ -24,23 +24,41 @@ const LoginButton = () => {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  if (!user) {
-    return (
-      <button
-        onClick={() => navigate('/login')}
-        className="flex items-center gap-1.5 px-3 py-2 rounded-full font-semibold text-xs transition-all hover:scale-105 active:scale-95"
-        style={{
-          background: 'linear-gradient(135deg, hsl(var(--gold)), hsl(var(--saffron)))',
-          color: 'hsl(16 82% 14%)',
-          boxShadow: '0 2px 8px hsl(var(--gold) / 0.4)',
-        }}
-        title={t('Login', 'लॉगिन')}
-      >
-        <User className="w-4 h-4" />
-       <span>{t('Login', 'लॉगिन')}</span>
-      </button>
-    );
-  }
+if (!user) {
+
+  return (
+
+    <button
+
+      onClick={() => navigate('/login')}
+
+      className="flex items-center gap-2 px-3 py-2 rounded-full font-semibold text-xs transition-all hover:scale-105"
+
+      style={{
+        background:
+          'linear-gradient(135deg, hsl(var(--gold)), hsl(var(--saffron)))',
+
+        color: 'hsl(16 82% 14%)',
+
+        boxShadow:
+          '0 2px 8px hsl(var(--gold) / 0.4)',
+      }}
+
+    >
+
+      <User className="w-4 h-4" />
+
+      <span>
+
+        {t('Login', 'लॉगिन')}
+
+      </span>
+
+    </button>
+
+  );
+
+}
 
   return (
     <div className="relative" ref={menuRef}>
@@ -54,7 +72,19 @@ const LoginButton = () => {
         }}
         title={profile?.name || t('Profile', 'प्रोफाइल')}
       >
-        <UserCircle className="w-4 h-4" />
+      {user?.user_metadata?.avatar_url ? (
+
+  <img
+    src={user.user_metadata.avatar_url}
+    alt="profile"
+    className="w-7 h-7 rounded-full object-cover border border-white"
+  />
+
+) : (
+
+  <UserCircle className="w-4 h-4" />
+
+)}
         <span className="hidden sm:inline max-w-[60px] truncate">
           {profile?.name?.split(' ')[0] || t('Me', 'मैं')}
         </span>
