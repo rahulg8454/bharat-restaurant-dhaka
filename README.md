@@ -81,17 +81,20 @@ npm install
 # Run locally
 npm run dev
 ```
-🌍 Deployment
+## 🌍 Deployment
 
 Deployed using Vercel
 
 npm run build
-Future Improvements
+```
+
+## Future Improvements
 🧾 Order via WhatsApp integration
 💳 Online payment integration
 📊 Admin dashboard for menu management
 ⭐ Ratings & reviews
-👨‍💻 Author
+```
+ ##👨‍💻 Author
 
 Rahul Gupta
 Computer Science Engineer (Student)
